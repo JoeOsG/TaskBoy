@@ -22,19 +22,6 @@ async function loadTasks() {
     }
 }
 
-// Function to get the user list from localStorage
-function getUserList() {
-    const userListString = localStorage.getItem("userList");
-    if (userListString) {
-        try {
-            return JSON.parse(userListString);
-        } catch (error) {
-            console.error("Error parsing userList from localStorage:", error);
-            return []; // Return empty array if parsing fails
-        }
-    }
-    return []; // Return empty array if no userList is found
-}
 
 // Function to write tasks to the JSON file
 async function saveTasks(tasks) {
@@ -45,14 +32,6 @@ async function saveTasks(tasks) {
     }
 }
 
-// Function to save the user list to localStorage
-function saveUserList(userList) {
-    try {
-        localStorage.setItem("userList", JSON.stringify(userList));
-    } catch (error) {
-        console.error("Error saving userList to localStorage:", error);
-    }
-}
 
 // Initialize tasks in memory
 let userTasks = {};

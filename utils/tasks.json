@@ -15,19 +15,19 @@
     {
       "id": "566634da",
       "description": "FIRST (give Nico treat)",
-      "completed": false,
+      "completed": true,
       "timestamp": "2025-08-31T15:06:45.684Z"
     },
     {
       "id": "07ffab49",
       "description": "KAAATTT",
-      "completed": false,
+      "completed": true,
       "timestamp": "2025-08-31T15:06:55.205Z"
     },
     {
       "id": "e2826889",
       "description": "pretty",
-      "completed": false,
+      "completed": true,
       "timestamp": "2025-09-01T17:46:46.440Z"
     },
     {
@@ -41,13 +41,211 @@
       "description": "no id",
       "completed": true,
       "timestamp": "2025-09-02T15:21:14.117Z"
+    },
+    {
+      "id": "e12c5b20",
+      "description": "rest of commands",
+      "completed": true,
+      "timestamp": "2026-01-08T14:39:28.070Z"
+    },
+    {
+      "id": "68517292",
+      "description": "AT-color, AT-data, AT-numeral, AT-logo,AT-piepag,AT-noserie,AT-cantidad,AT-encabezados",
+      "completed": false,
+      "timestamp": "2026-01-08T21:32:40.783Z"
+    },
+    {
+      "id": "4b96b527",
+      "description": "add multpile tasks in one line",
+      "completed": false,
+      "timestamp": "2026-01-08T21:33:23.337Z"
+    },
+    {
+      "id": "655b66ae",
+      "description": "1 2",
+      "completed": false,
+      "timestamp": "2026-01-08T21:33:58.988Z"
+    },
+    {
+      "id": "656af0be",
+      "description": "idea for undo",
+      "completed": false,
+      "timestamp": "2026-01-09T18:29:15.353Z"
+    },
+    {
+      "id": "fe05839c",
+      "description": "revisar como se muesta el logo",
+      "completed": false,
+      "timestamp": "2026-01-09T18:33:24.102Z"
+    },
+    {
+      "id": "ee1069cc",
+      "description": "test",
+      "completed": true,
+      "timestamp": "2026-01-10T01:41:03.670Z"
+    },
+    {
+      "id": "c18aa874",
+      "description": "setup github",
+      "completed": false,
+      "timestamp": "2026-01-10T14:57:18.607Z"
+    },
+    {
+      "id": "723f74f8",
+      "description": "setup alternative testing",
+      "completed": false,
+      "timestamp": "2026-01-10T14:57:25.187Z"
+    },
+    {
+      "id": "63223b42",
+      "description": "walk",
+      "completed": true,
+      "timestamp": "2026-01-10T16:11:31.547Z"
+    },
+    {
+      "id": "16fc4428",
+      "description": "edit command oops",
+      "completed": false,
+      "timestamp": "2026-01-10T16:52:40.496Z"
+    },
+    {
+      "id": "37062eb7",
+      "description": "delete command",
+      "completed": false,
+      "timestamp": "2026-01-10T16:53:47.844Z"
+    },
+    {
+      "id": "d085c9c6",
+      "description": "lists",
+      "completed": false,
+      "timestamp": "2026-01-11T15:50:01.430Z"
+    },
+    {
+      "id": "c99a01f6",
+      "description": "meeting",
+      "completed": true,
+      "timestamp": "2026-01-12T18:48:21.009Z"
+    },
+    {
+      "id": "81932d9a",
+      "description": "upload",
+      "completed": true,
+      "timestamp": "2026-01-15T13:11:34.497Z"
+    },
+    {
+      "id": "a52a2fbf",
+      "description": "testing",
+      "completed": false,
+      "timestamp": "2026-01-15T13:21:44.486Z"
+    },
+    {
+      "id": "12bb7350",
+      "description": "compare",
+      "completed": false,
+      "timestamp": "2026-01-15T13:21:44.488Z"
+    },
+    {
+      "id": "8fe64a6b",
+      "description": "testing",
+      "completed": false,
+      "timestamp": "2026-01-15T13:22:05.447Z"
+    },
+    {
+      "id": "d576bfca",
+      "description": "compare",
+      "completed": false,
+      "timestamp": "2026-01-15T13:22:05.449Z"
+    },
+    {
+      "id": "1af3d967",
+      "description": "testing",
+      "completed": false,
+      "timestamp": "2026-01-15T13:23:29.451Z"
+    },
+    {
+      "id": "942dcacc",
+      "description": "compare",
+      "completed": false,
+      "timestamp": "2026-01-15T13:23:29.453Z"
+    },
+    {
+      "id": "d0a553f4",
+      "description": "adjust",
+      "completed": false,
+      "timestamp": "2026-01-15T13:23:29.454Z"
+    },
+    {
+      "id": "77b9235d",
+      "description": "testing",
+      "completed": false,
+      "timestamp": "2026-01-15T13:24:30.230Z"
+    },
+    {
+      "id": "48ea5012",
+      "description": "compare",
+      "completed": false,
+      "timestamp": "2026-01-15T13:24:30.232Z"
+    },
+    {
+      "id": "5d26e135",
+      "description": "adjust",
+      "completed": false,
+      "timestamp": "2026-01-15T13:24:30.233Z"
+    },
+    {
+      "id": "02c35bbc",
+      "description": "testing",
+      "completed": false,
+      "timestamp": "2026-01-15T13:24:52.963Z"
+    },
+    {
+      "id": "7a7d5692",
+      "description": "compare",
+      "completed": false,
+      "timestamp": "2026-01-15T13:24:52.964Z"
+    },
+    {
+      "id": "b0ad54ef",
+      "description": "adjust",
+      "completed": false,
+      "timestamp": "2026-01-15T13:24:52.965Z"
+    },
+    {
+      "id": "7f33038c",
+      "description": "test",
+      "completed": false,
+      "timestamp": "2026-01-15T13:25:10.889Z"
+    },
+    {
+      "id": "84c49226",
+      "description": "sync",
+      "completed": false,
+      "timestamp": "2026-01-15T13:27:57.728Z"
+    },
+    {
+      "id": "69b22914",
+      "description": "homogenizar",
+      "completed": false,
+      "timestamp": "2026-01-15T13:31:20.188Z"
+    },
+    {
+      "id": "86b0dc48",
+      "description": "anotar",
+      "completed": false,
+      "timestamp": "2026-01-15T13:31:20.190Z"
+    },
+    {
+      "id": "fbf430e0",
+      "description": "break",
+      "completed": true,
+      "timestamp": "2026-01-15T13:31:20.191Z"
     }
   ],
   "160815842613919744": [
     {
       "id": "00e6d1e0",
       "description": "<:kawaiihuh:1330778722168737883>",
-      "completed": false,
+      "completed": true,
       "timestamp": "2025-08-31T15:07:16.679Z"
     },
     {
@@ -55,6 +253,60 @@
       "description": "go back to apartment 😦",
       "completed": true,
       "timestamp": "2025-08-31T15:07:44.294Z"
+    },
+    {
+      "id": "94f6b225",
+      "description": "eat",
+      "completed": true,
+      "timestamp": "2026-01-09T01:22:24.856Z"
+    },
+    {
+      "id": "8f3d49a7",
+      "description": "out bed, eat something",
+      "completed": true,
+      "timestamp": "2026-01-10T16:51:52.660Z"
+    },
+    {
+      "id": "d775dcd5",
+      "description": "out bed",
+      "completed": true,
+      "timestamp": "2026-01-10T16:53:36.574Z"
+    },
+    {
+      "id": "32c5a942",
+      "description": "eat something",
+      "completed": false,
+      "timestamp": "2026-01-10T16:53:42.972Z"
+    },
+    {
+      "id": "0b77b509",
+      "description": "START STREAM",
+      "completed": false,
+      "timestamp": "2026-01-10T16:53:48.027Z"
+    },
+    {
+      "id": "feb09ee8",
+      "description": "Jasper license",
+      "completed": true,
+      "timestamp": "2026-01-10T16:53:54.970Z"
+    },
+    {
+      "id": "ea85849c",
+      "description": "brushy teeth",
+      "completed": false,
+      "timestamp": "2026-01-10T16:54:01.435Z"
+    },
+    {
+      "id": "b451166e",
+      "description": "email PMA",
+      "completed": true,
+      "timestamp": "2026-01-10T16:56:00.628Z"
+    },
+    {
+      "id": "2309aad4",
+      "description": "text attending",
+      "completed": true,
+      "timestamp": "2026-01-10T16:56:08.081Z"
     }
   ]
 }
