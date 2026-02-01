@@ -1,17 +1,4 @@
 {
-    "welcomeChannel": "1459948285891444796",
-    "allowedChannels": [
-        {
-            "id": "1453945922214952972",
-            "name": "taskssssssssss"
-        },
-        {
-            "id": "1454654323748245565",
-            "name": "k-task"
-        },
-        {
-            "id": "1459586239941447807",
-            "name": "ayuda-con-la-tarea"
-        }
-    ]
+    "forumId": "1453945922214952972",
+    "welcomePostName": "start-here"
 }

@@ -1,17 +1,12 @@
-require('dotenv').config();
+import { readFileSync } from 'fs';
+import 'dotenv/config';
 
-const { Client, Events, GatewayIntentBits, EmbedBuilder, Colors } = require('discord.js');
+import { Client, Events, GatewayIntentBits, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, Colors } from 'discord.js';
 
-const {
-    initializeTasks,
-    addTask,
-    getUserTasks,
-    markTaskDone,
-    getTaskByIndex,
-    getUserData,
-} = require("./utils/taskHandler"); // Import our task functions
+import tasks from "./utils/taskHandler.js"; // Import our task functions
+//import threads from "./utils/welcomeThread.js";
 
-const client = new Client({
+export const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
@@ -19,18 +14,57 @@ const client = new Client({
     ],
 });
 
-const ALLOWED_TEXT_CHANNELS = new Set([
-    "1453945922214952972", // #taskssssssssss
-    "1454654323748245565",  // #k-task
-    "1459586239941447807"  // #ayuda-con-la-tarea
-
-]);
-
+const CONFIG = JSON.parse(readFileSync('./utils/channels.json', 'utf-8'));
+// const ALLOWED_TEXT_CHANNELS = new Set(CONFIG.allowedChannels.map(c => c.id));
 
 client.once("clientReady", async () => {
     console.log(`Ready! Logged in as ${client.user.tag}!`);
-    await initializeTasks(); // Load tasks when the bot starts
-    console.log("Task system initialized.");
+    await tasks.initializeTasks(); // Load tasks when the bot starts
+
+    const forum = await client.channels.fetch(CONFIG.forumId);
+    // look for existing welcome post by name
+    let welcomePost = forum.threads.cache.find(t => t.name === CONFIG.welcomePostName);
+    if (!welcomePost) {
+        welcomePost = await forum.threads.create({
+            name: CONFIG.welcomePostName,
+            message: {
+                embeds: [
+                    new EmbedBuilder()
+                        .setTitle('Start with your tasks?')
+                        .setDescription('Click the button to open a post.')
+                ],
+                components: [
+                    new ActionRowBuilder().addComponents(
+                        new ButtonBuilder()
+                            .setCustomId('open_user_post')
+                            .setLabel('Open Thread')
+                            .setStyle(ButtonStyle.Primary)
+                    )
+                ]
+            }
+        });
+    }
+});
+
+// 2. Button click handler
+client.on(Events.InteractionCreate, async interaction => {
+    if (!interaction.isButton() || interaction.customId !== 'open_user_post') return;
+
+    const forum = await client.channels.fetch(CONFIG.forumId);
+    const userPostName = `${interaction.user.username} TASKS`;
+
+    // reuse existing user post if it exists
+    let post = forum.threads.cache.find(t => t.name === userPostName);
+    if (!post) {
+        post = await forum.threads.create({
+            name: userPostName,
+            message: `<@${interaction.user.id}> this is your place to use the bot.`
+        });
+        await post.members.add(interaction.user);
+    } else {
+        await post.send(`<@${interaction.user.id}> reopened your post.`);
+    }
+    await interaction.reply({ content: `Post ready: ${post}`, ephemeral: true });
 });
 
 client.login(process.env.DISCORD_TOKEN);
@@ -40,7 +74,7 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
     if (message.author.bot) return;
 
     if (!message.inGuild()) return;
-    if (!ALLOWED_TEXT_CHANNELS.has(message.channel.id)) return;
+    // if (!ALLOWED_TEXT_CHANNELS.has(message.channel.id)) return;
 
     const prefix = '!';
 
@@ -54,7 +88,7 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
 
     // --- Existing Commands ---
     // --- !task Command (Multi-task support) ---
-    if (command === "tasks") {
+    if (command === "task") {
         const fullMessage = args.join(" ");
         if (!fullMessage) {
             return message.reply("Please provide one or more task descriptions, separated by `;` or `,`.");
@@ -72,7 +106,7 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
 
         const addedTasks = [];
         for (const description of descriptions) {
-            const newTask = await addTask(userId, description);
+            const newTask = await tasks.addTask(userId, description);
             addedTasks.push(newTask);
         }
 
@@ -119,13 +153,13 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
         }
         message.channel.send(args.join(' '));
     }
-    if (command === 'task') {
+    if (command === 'task1') {
         const description = args.join(" ");
         if (!description) {
             return message.reply("Please provide a description for your task!");
         }
 
-        const newTask = await addTask(userId, description);
+        const newTask = await tasks.addTask(userId, description);
         // Create an embed for task addition
         const embed = new EmbedBuilder()
             .setColor(0x00ff00) // Green color
@@ -143,7 +177,7 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
     }
     // --- !check Command ---
     if (command === "check") {
-        const userAllTasks = getUserTasks(userId);
+        const userAllTasks = tasks.getUserTasks(userId);
         const incompleteTasks = userAllTasks.filter((task) => !task.completed);
 
         const embed = new EmbedBuilder()
@@ -195,12 +229,12 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
         // Try to parse as a number (for list index)
         const taskNumber = parseInt(identifier);
         if (!isNaN(taskNumber)) {
-            taskToComplete = getTaskByIndex(userId, taskNumber);
+            taskToComplete = tasks.getTaskByIndex(userId, taskNumber);
         }
 
         // If not found by number, try to find by ID
         if (!taskToComplete) {
-            const userAllTasks = getUserTasks(userId);
+            const userAllTasks = tasks.getUserTasks(userId);
             taskToComplete = userAllTasks.find(
                 (t) => t.id === identifier && !t.completed
             );
@@ -218,7 +252,7 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
             });
         }
 
-        const completedTask = await markTaskDone(userId, taskToComplete.id);
+        const completedTask = await tasks.markTaskDone(userId, taskToComplete.id);
 
         if (completedTask) {
             // Create an embed for task completion

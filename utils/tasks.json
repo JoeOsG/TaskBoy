@@ -207,7 +207,7 @@
     {
       "id": "b0ad54ef",
       "description": "adjust",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-15T13:24:52.965Z"
     },
     {
@@ -231,7 +231,7 @@
     {
       "id": "86b0dc48",
       "description": "anotar",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-15T13:31:20.190Z"
     },
     {
