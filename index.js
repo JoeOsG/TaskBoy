@@ -110,7 +110,7 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
             addedTasks.push(newTask);
         }
 
-        const userData = getUserData(userId);
+        const userData = tasks.getUserData(userId);
         const embed = new EmbedBuilder()
             .setColor(userData.userColor || Colors.Green)
             .setTitle(`✅ ${addedTasks.length} Task(s) Added!`)
