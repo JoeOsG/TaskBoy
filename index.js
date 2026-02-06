@@ -1,18 +1,12 @@
-const { readFileSync } = require('fs');
-require('dotenv').config();
+import { readFileSync } from 'fs';
+import 'dotenv/config';
 
-const { Client, Events, GatewayIntentBits, EmbedBuilder, Colors } = require('discord.js');
+import { Client, Events, GatewayIntentBits, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, Colors } from 'discord.js';
 
-const {
-    initializeTasks,
-    addTask,
-    getUserTasks,
-    markTaskDone,
-    getTaskByIndex,
-    getUserData,
-} = require("./utils/taskHandler"); // Import our task functions
+import tasks from "./utils/taskHandler.js"; // Import our task functions
 
-const client = new Client({
+
+export const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
@@ -20,31 +14,13 @@ const client = new Client({
     ],
 });
 
+
+
 client.once("clientReady", async () => {
     console.log(`Ready! Logged in as ${client.user.tag}!`);
-    await initializeTasks(); // Load tasks when the bot starts
-    console.log("Task system initialized.");
-
-    //     m => m.author.id === client.user.id && m.embeds[0]?.title === 'Need help?'
-    // );
-
-    // if (!existing) {
-    //     const embed = new EmbedBuilder()
-    //         .setTitle('Need help?')
-    //         .setDescription('Click the button below to open a private thread.');
-
-    //     const row = new ActionRowBuilder().addComponents(
-    //         new ButtonBuilder()
-    //             .setCustomId('open_help_thread')
-    //             .setLabel('Open Thread')
-    //             .setStyle(ButtonStyle.Primary)
-    //     );
-
-    //     await welcomeCh.send({ embeds: [embed], components: [row] });
-    // }
+    await tasks.initializeTasks(); // Load tasks when the bot starts
 });
 
-// 
 
 client.login(process.env.DISCORD_TOKEN);
 
@@ -52,6 +28,7 @@ client.login(process.env.DISCORD_TOKEN);
 client.on(Events.MessageCreate, async message => { // Added 'async' keyword here!
     if (message.author.bot) return;
 
+    // if (!message.inGuild()) return;
 
     const prefix = '!';
 
@@ -65,7 +42,7 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
 
     // --- Existing Commands ---
     // --- !task Command (Multi-task support) ---
-    if (command === "tasks") {
+    if (command === "task") {
         const fullMessage = args.join(" ");
         if (!fullMessage) {
             return message.reply("Please provide one or more task descriptions, separated by `;` or `,`.");
@@ -83,11 +60,11 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
 
         const addedTasks = [];
         for (const description of descriptions) {
-            const newTask = await addTask(userId, description);
+            const newTask = await tasks.addTask(userId, description);
             addedTasks.push(newTask);
         }
 
-        const userData = getUserData(userId);
+        const userData = tasks.getUserData(userId);
         const embed = new EmbedBuilder()
             .setColor(userData.userColor || Colors.Green)
             .setTitle(`✅ ${addedTasks.length} Task(s) Added!`)
@@ -106,16 +83,6 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
         return message.channel.send({ embeds: [embed] });
     }
 
-    if (command === 'task' && message.author.username === 'joeos') {
-        message.reply('Hi original slave!');
-    }
-    if (command === 'task' && message.author.username === 'kawaiikitkat') {
-        message.reply('Hi kat!   Hi kat!    Hi kat!          Hi kat!');
-    }
-    if (command === 'task' && message.author.username === 'alciia53') {
-        message.reply('Smart!');
-    }
-
     if (command === 'ping') {
         message.reply('Slave me is, but still here!');
     }
@@ -130,13 +97,13 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
         }
         message.channel.send(args.join(' '));
     }
-    if (command === 'task') {
+    if (command === 'task1') {
         const description = args.join(" ");
         if (!description) {
             return message.reply("Please provide a description for your task!");
         }
 
-        const newTask = await addTask(userId, description);
+        const newTask = await tasks.addTask(userId, description);
         // Create an embed for task addition
         const embed = new EmbedBuilder()
             .setColor(0x00ff00) // Green color
@@ -154,7 +121,7 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
     }
     // --- !check Command ---
     if (command === "check") {
-        const userAllTasks = getUserTasks(userId);
+        const userAllTasks = tasks.getUserTasks(userId);
         const incompleteTasks = userAllTasks.filter((task) => !task.completed);
 
         const embed = new EmbedBuilder()
@@ -206,12 +173,12 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
         // Try to parse as a number (for list index)
         const taskNumber = parseInt(identifier);
         if (!isNaN(taskNumber)) {
-            taskToComplete = getTaskByIndex(userId, taskNumber);
+            taskToComplete = tasks.getTaskByIndex(userId, taskNumber);
         }
 
         // If not found by number, try to find by ID
         if (!taskToComplete) {
-            const userAllTasks = getUserTasks(userId);
+            const userAllTasks = tasks.getUserTasks(userId);
             taskToComplete = userAllTasks.find(
                 (t) => t.id === identifier && !t.completed
             );
@@ -229,7 +196,7 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
             });
         }
 
-        const completedTask = await markTaskDone(userId, taskToComplete.id);
+        const completedTask = await tasks.markTaskDone(userId, taskToComplete.id);
 
         if (completedTask) {
             // Create an embed for task completion
@@ -257,11 +224,6 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
             });
         }
 
-    }
-
-
-    if (command === 'cats') {
-        message.reply('maureen and jasper are just as spoiled if not more, also hi Nico!');
     }
 
     // --- End Existing Commands ---
