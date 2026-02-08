@@ -75,7 +75,7 @@
     {
       "id": "fa1c8b15",
       "description": "log current meeting done",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-12T19:55:57.528Z"
     },
     {
@@ -117,19 +117,19 @@
     {
       "id": "f84e07d0",
       "description": "get multitask here for bestie",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-20T23:07:02.486Z"
     },
     {
       "id": "17e48b3e",
       "description": "doooooo!",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-30T17:57:27.971Z"
     },
     {
       "id": "4d4305fe",
       "description": "numbering of tasks in json file",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-01T21:10:07.650Z"
     },
     {
@@ -165,7 +165,7 @@
     {
       "id": "4d9c0292",
       "description": "prueba",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-05T17:37:02.750Z"
     },
     {
@@ -177,19 +177,19 @@
     {
       "id": "eba7a79e",
       "description": "than one",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-05T18:23:14.969Z"
     },
     {
       "id": "b84433ed",
       "description": "thanks",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-05T18:23:32.960Z"
     },
     {
       "id": "c63e9e71",
       "description": "for waiting",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-05T18:23:32.960Z"
     }
   ],
