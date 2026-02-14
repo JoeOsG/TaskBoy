@@ -26,6 +26,7 @@ client.login(process.env.DISCORD_TOKEN);
 
 
 client.on(Events.MessageCreate, async message => { // Added 'async' keyword here!
+    console.log('message')
     if (message.author.bot) return;
 
     // if (!message.inGuild()) return;
@@ -155,7 +156,7 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
 
     // --- !done Command ---
     if (command === "done") {
-        const identifier = args.join(" "); // Can be task ID or list number
+        const identifier = args[0]; // Can be task ID or list number
         if (!identifier) {
             return message.reply({
                 embeds: [
@@ -168,49 +169,45 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
             });
         }
 
-        const allDones = identifier
-            .split(/;|,/)
-            .map((oneDone) => oneDone.trim())
-            .filter((oneDone) => oneDone.length > 0);
+        let taskToComplete = null;
 
-        const doneTasks = [];
-        const notFound = [];
-        for (const doneTask of allDones) {
-            let taskToComplete = null;
-
-            // Try to parse as a number (for list index)
-            const taskNumber = parseInt(identifier);
-            if (!isNaN(taskNumber)) {
-                taskToComplete = tasks.getTaskByIndex(userId, taskNumber);
-            }
-
-            // If not found by number, try to find by ID
-            if (!taskToComplete) {
-                const userAllTasks = tasks.getUserTasks(userId);
-                taskToComplete = userAllTasks.find(
-                    (t) => t.id === identifier && !t.completed
-                );
-            }
-
-            if (!taskToComplete) {
-                notFound.push(doneTask);
-            }
-
-            if (taskToComplete) {
-                const completedTask = await tasks.markTaskDone(userId, taskToComplete.id);
-                doneTasks.push(completedTask);
-            }
+        // Try to parse as a number (for list index)
+        const taskNumber = parseInt(identifier);
+        if (!isNaN(taskNumber)) {
+            taskToComplete = tasks.getTaskByIndex(userId, taskNumber);
         }
 
-        if (doneTasks.length) {
+        // If not found by number, try to find by ID
+        if (!taskToComplete) {
+            const userAllTasks = tasks.getUserTasks(userId);
+            taskToComplete = userAllTasks.find(
+                (t) => t.id === identifier && !t.completed
+            );
+        }
+
+        if (!taskToComplete) {
+            return message.reply({
+                embeds: [
+                    new EmbedBuilder()
+                        .setColor(0xff0000) // Red color for error
+                        .setDescription(
+                            `❌ Could not find an outstanding task with ID/number \`${identifier}\`.`
+                        ),
+                ],
+            });
+        }
+
+        const completedTask = await tasks.markTaskDone(userId, taskToComplete.id);
+
+        if (completedTask) {
             // Create an embed for task completion
             const embed = new EmbedBuilder()
                 .setColor(0x00ff00) // Green color
-                .setTitle("✅ Task(s) Completed!")
-                .setDescription(`'**${doneTasks.length}**'`)
+                .setTitle("✅ Task Completed!")
+                .setDescription(`'**${completedTask.description}**'`)
                 .addFields(
                     // { name: "ID", value: `\`${completedTask.id}\``, inline: true },
-                    { name: "DONE", value: `\{doneTasks.length}\``, inline: true },
+                    { name: "DONE", value: `\YES\``, inline: true },
                     { name: "Completed By", value: `<@${userId}>`, inline: true }
                 )
                 .setTimestamp()
@@ -223,7 +220,7 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
                 embeds: [
                     new EmbedBuilder()
                         .setColor(0xff0000) // Red color for error
-                        .setDescription("❌ Failed to mark any task as done. Please try again."),
+                        .setDescription("❌ Failed to mark task as done. Please try again."),
                 ],
             });
         }

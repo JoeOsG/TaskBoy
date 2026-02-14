@@ -75,7 +75,7 @@
     {
       "id": "fa1c8b15",
       "description": "log current meeting done",
-      "completed": true,
+      "completed": false,
       "timestamp": "2026-01-12T19:55:57.528Z"
     },
     {
@@ -117,19 +117,19 @@
     {
       "id": "f84e07d0",
       "description": "get multitask here for bestie",
-      "completed": true,
+      "completed": false,
       "timestamp": "2026-01-20T23:07:02.486Z"
     },
     {
       "id": "17e48b3e",
       "description": "doooooo!",
-      "completed": true,
+      "completed": false,
       "timestamp": "2026-01-30T17:57:27.971Z"
     },
     {
       "id": "4d4305fe",
       "description": "numbering of tasks in json file",
-      "completed": true,
+      "completed": false,
       "timestamp": "2026-02-01T21:10:07.650Z"
     },
     {
@@ -165,7 +165,7 @@
     {
       "id": "4d9c0292",
       "description": "prueba",
-      "completed": true,
+      "completed": false,
       "timestamp": "2026-02-05T17:37:02.750Z"
     },
     {
@@ -177,7 +177,7 @@
     {
       "id": "eba7a79e",
       "description": "than one",
-      "completed": true,
+      "completed": false,
       "timestamp": "2026-02-05T18:23:14.969Z"
     },
     {
@@ -191,6 +191,54 @@
       "description": "for waiting",
       "completed": true,
       "timestamp": "2026-02-05T18:23:32.960Z"
+    },
+    {
+      "id": "8a5b1463",
+      "description": "outside chores",
+      "completed": true,
+      "timestamp": "2026-02-06T14:45:36.237Z"
+    },
+    {
+      "id": "f1c221fa",
+      "description": "ride",
+      "completed": true,
+      "timestamp": "2026-02-06T14:45:36.238Z"
+    },
+    {
+      "id": "fe608e09",
+      "description": "card",
+      "completed": true,
+      "timestamp": "2026-02-06T14:45:36.239Z"
+    },
+    {
+      "id": "364a7e37",
+      "description": "breakfast",
+      "completed": false,
+      "timestamp": "2026-02-06T14:45:36.239Z"
+    },
+    {
+      "id": "3e163193",
+      "description": "download new car papers",
+      "completed": false,
+      "timestamp": "2026-02-06T17:28:44.382Z"
+    },
+    {
+      "id": "b3edf6cd",
+      "description": "print car papers",
+      "completed": false,
+      "timestamp": "2026-02-06T17:28:44.382Z"
+    },
+    {
+      "id": "663068ef",
+      "description": "info payment",
+      "completed": false,
+      "timestamp": "2026-02-09T17:16:43.033Z"
+    },
+    {
+      "id": "2a5dd575",
+      "description": "vitamins",
+      "completed": false,
+      "timestamp": "2026-02-09T17:16:43.034Z"
     }
   ],
   "160815842613919744": [
@@ -377,19 +425,37 @@
       "description": "return books",
       "completed": true,
       "timestamp": "2026-02-05T18:41:32.226Z"
+    },
+    {
+      "id": "0ea5e79a",
+      "description": "socials post",
+      "completed": false,
+      "timestamp": "2026-02-06T15:21:27.306Z"
+    },
+    {
+      "id": "c424cba2",
+      "description": "shower",
+      "completed": false,
+      "timestamp": "2026-02-06T15:21:27.306Z"
+    },
+    {
+      "id": "1b2e0d63",
+      "description": "reluctantly get ready for socializing",
+      "completed": false,
+      "timestamp": "2026-02-06T15:21:27.307Z"
     }
   ],
   "526465307775336469": [
     {
       "id": "82a85dca",
       "description": "wall",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-05T17:38:33.446Z"
     },
     {
       "id": "e05a703c",
       "description": "mukherjee",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-05T17:38:33.447Z"
     },
     {
@@ -409,6 +475,12 @@
       "description": "email kelly update itin for zimmer man",
       "completed": true,
       "timestamp": "2026-02-05T23:49:37.068Z"
+    },
+    {
+      "id": "69207f53",
+      "description": "timesheet",
+      "completed": true,
+      "timestamp": "2026-02-06T23:32:57.921Z"
     }
   ]
 }
