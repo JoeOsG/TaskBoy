@@ -14,20 +14,20 @@
     },
     {
       "id": "566634da",
-      "description": "FIRST (give Nico treat)",
-      "completed": true,
+      "description": "test",
+      "completed": false,
       "timestamp": "2025-08-31T15:06:45.684Z"
     },
     {
       "id": "07ffab49",
-      "description": "KAAATTT",
-      "completed": true,
+      "description": "bestie",
+      "completed": false,
       "timestamp": "2025-08-31T15:06:55.205Z"
     },
     {
       "id": "e2826889",
       "description": "pretty",
-      "completed": true,
+      "completed": false,
       "timestamp": "2025-09-01T17:46:46.440Z"
     },
     {
@@ -45,200 +45,8 @@
     {
       "id": "be6a1b98",
       "description": "one",
-      "completed": true,
+      "completed": false,
       "timestamp": "2026-01-10T17:17:27.704Z"
-    },
-    {
-      "id": "1c1c5aef",
-      "description": "have a fucking day",
-      "completed": true,
-      "timestamp": "2026-01-12T16:41:04.361Z"
-    },
-    {
-      "id": "623db66e",
-      "description": "monday",
-      "completed": true,
-      "timestamp": "2026-01-12T16:41:09.882Z"
-    },
-    {
-      "id": "b832017b",
-      "description": "meeting",
-      "completed": true,
-      "timestamp": "2026-01-12T18:48:03.399Z"
-    },
-    {
-      "id": "37502334",
-      "description": "try multitask",
-      "completed": true,
-      "timestamp": "2026-01-12T19:55:49.328Z"
-    },
-    {
-      "id": "fa1c8b15",
-      "description": "log current meeting done",
-      "completed": false,
-      "timestamp": "2026-01-12T19:55:57.528Z"
-    },
-    {
-      "id": "785609a4",
-      "description": "stupoid more",
-      "completed": true,
-      "timestamp": "2026-01-12T19:56:06.896Z"
-    },
-    {
-      "id": "c6e8237d",
-      "description": "stoday",
-      "completed": true,
-      "timestamp": "2026-01-15T17:29:25.570Z"
-    },
-    {
-      "id": "4e1b9ea9",
-      "description": "restart server",
-      "completed": true,
-      "timestamp": "2026-01-17T15:28:33.192Z"
-    },
-    {
-      "id": "dae11d1f",
-      "description": "interrup alicia lol",
-      "completed": true,
-      "timestamp": "2026-01-17T15:28:33.193Z"
-    },
-    {
-      "id": "34738ace",
-      "description": "1, 2",
-      "completed": true,
-      "timestamp": "2026-01-17T15:35:04.580Z"
-    },
-    {
-      "id": "f5f3d11b",
-      "description": "make alicia counter",
-      "completed": true,
-      "timestamp": "2026-01-20T17:12:20.765Z"
-    },
-    {
-      "id": "f84e07d0",
-      "description": "get multitask here for bestie",
-      "completed": false,
-      "timestamp": "2026-01-20T23:07:02.486Z"
-    },
-    {
-      "id": "17e48b3e",
-      "description": "doooooo!",
-      "completed": false,
-      "timestamp": "2026-01-30T17:57:27.971Z"
-    },
-    {
-      "id": "4d4305fe",
-      "description": "numbering of tasks in json file",
-      "completed": false,
-      "timestamp": "2026-02-01T21:10:07.650Z"
-    },
-    {
-      "id": "2d5a2e60",
-      "description": "one",
-      "completed": false,
-      "timestamp": "2026-02-05T17:35:18.664Z"
-    },
-    {
-      "id": "3bf5701d",
-      "description": "and two",
-      "completed": true,
-      "timestamp": "2026-02-05T17:35:18.665Z"
-    },
-    {
-      "id": "8d3b43e8",
-      "description": "two",
-      "completed": false,
-      "timestamp": "2026-02-05T17:36:26.555Z"
-    },
-    {
-      "id": "603e9ed9",
-      "description": "and three",
-      "completed": false,
-      "timestamp": "2026-02-05T17:36:26.555Z"
-    },
-    {
-      "id": "9557576b",
-      "description": "test",
-      "completed": false,
-      "timestamp": "2026-02-05T17:37:02.749Z"
-    },
-    {
-      "id": "4d9c0292",
-      "description": "prueba",
-      "completed": false,
-      "timestamp": "2026-02-05T17:37:02.750Z"
-    },
-    {
-      "id": "b099c195",
-      "description": "more",
-      "completed": true,
-      "timestamp": "2026-02-05T18:23:14.969Z"
-    },
-    {
-      "id": "eba7a79e",
-      "description": "than one",
-      "completed": false,
-      "timestamp": "2026-02-05T18:23:14.969Z"
-    },
-    {
-      "id": "b84433ed",
-      "description": "thanks",
-      "completed": true,
-      "timestamp": "2026-02-05T18:23:32.960Z"
-    },
-    {
-      "id": "c63e9e71",
-      "description": "for waiting",
-      "completed": true,
-      "timestamp": "2026-02-05T18:23:32.960Z"
-    },
-    {
-      "id": "8a5b1463",
-      "description": "outside chores",
-      "completed": true,
-      "timestamp": "2026-02-06T14:45:36.237Z"
-    },
-    {
-      "id": "f1c221fa",
-      "description": "ride",
-      "completed": true,
-      "timestamp": "2026-02-06T14:45:36.238Z"
-    },
-    {
-      "id": "fe608e09",
-      "description": "card",
-      "completed": true,
-      "timestamp": "2026-02-06T14:45:36.239Z"
-    },
-    {
-      "id": "364a7e37",
-      "description": "breakfast",
-      "completed": false,
-      "timestamp": "2026-02-06T14:45:36.239Z"
-    },
-    {
-      "id": "3e163193",
-      "description": "download new car papers",
-      "completed": false,
-      "timestamp": "2026-02-06T17:28:44.382Z"
-    },
-    {
-      "id": "b3edf6cd",
-      "description": "print car papers",
-      "completed": false,
-      "timestamp": "2026-02-06T17:28:44.382Z"
-    },
-    {
-      "id": "663068ef",
-      "description": "info payment",
-      "completed": false,
-      "timestamp": "2026-02-09T17:16:43.033Z"
-    },
-    {
-      "id": "2a5dd575",
-      "description": "vitamins",
-      "completed": false,
-      "timestamp": "2026-02-09T17:16:43.034Z"
     }
   ],
   "160815842613919744": [
@@ -265,19 +73,19 @@
     {
       "id": "02bead79",
       "description": "dont die",
-      "completed": true,
+      "completed": false,
       "timestamp": "2026-01-10T17:31:57.036Z"
     },
     {
       "id": "260dc10a",
       "description": "class prep maybe",
-      "completed": true,
+      "completed": false,
       "timestamp": "2026-01-10T17:32:11.279Z"
     },
     {
       "id": "6f2bc575",
       "description": "kah t13 1",
-      "completed": true,
+      "completed": false,
       "timestamp": "2026-01-10T20:50:36.750Z"
     },
     {
@@ -291,196 +99,6 @@
       "description": "kah t13 3",
       "completed": false,
       "timestamp": "2026-01-10T20:50:45.585Z"
-    },
-    {
-      "id": "a30af13c",
-      "description": "kah, check",
-      "completed": true,
-      "timestamp": "2026-01-13T10:47:50.221Z"
-    },
-    {
-      "id": "a56347d1",
-      "description": "bf",
-      "completed": true,
-      "timestamp": "2026-01-17T07:52:03.234Z"
-    },
-    {
-      "id": "b9e8da63",
-      "description": "clothes",
-      "completed": true,
-      "timestamp": "2026-01-17T07:52:11.785Z"
-    },
-    {
-      "id": "7da7f5f8",
-      "description": "plan futuro 15.02",
-      "completed": false,
-      "timestamp": "2026-01-20T22:24:58.137Z"
-    },
-    {
-      "id": "4601865d",
-      "description": "fnrp elearning",
-      "completed": false,
-      "timestamp": "2026-01-20T22:25:27.033Z"
-    },
-    {
-      "id": "1c7bcd10",
-      "description": "fnrp project",
-      "completed": false,
-      "timestamp": "2026-01-20T22:25:38.907Z"
-    },
-    {
-      "id": "a9c26b29",
-      "description": "kultura",
-      "completed": false,
-      "timestamp": "2026-01-20T22:25:48.586Z"
-    },
-    {
-      "id": "b4bfb0fb",
-      "description": "spr leo",
-      "completed": true,
-      "timestamp": "2026-01-20T22:25:59.486Z"
-    },
-    {
-      "id": "7a9e5db6",
-      "description": "spr twins",
-      "completed": false,
-      "timestamp": "2026-01-20T22:26:06.004Z"
-    },
-    {
-      "id": "c9301771",
-      "description": "deberes michal",
-      "completed": true,
-      "timestamp": "2026-01-20T22:26:15.964Z"
-    },
-    {
-      "id": "3f188a6a",
-      "description": "spr chicos",
-      "completed": true,
-      "timestamp": "2026-01-20T22:26:25.291Z"
-    },
-    {
-      "id": "1c162c5c",
-      "description": "jula indef",
-      "completed": false,
-      "timestamp": "2026-01-20T22:26:38.915Z"
-    },
-    {
-      "id": "06c1e075",
-      "description": "spr aleks",
-      "completed": false,
-      "timestamp": "2026-01-20T22:26:45.434Z"
-    },
-    {
-      "id": "46d308e4",
-      "description": "książki pola",
-      "completed": false,
-      "timestamp": "2026-01-20T22:27:02.025Z"
-    },
-    {
-      "id": "7230fa70",
-      "description": "sms boss",
-      "completed": true,
-      "timestamp": "2026-01-20T22:30:32.336Z"
-    },
-    {
-      "id": "c9f7e90c",
-      "description": "babcia",
-      "completed": true,
-      "timestamp": "2026-01-20T22:30:41.192Z"
-    },
-    {
-      "id": "eafae41d",
-      "description": "pay uni",
-      "completed": true,
-      "timestamp": "2026-01-20T22:35:20.636Z"
-    },
-    {
-      "id": "4d7a0772",
-      "description": "fnrp ejercicio",
-      "completed": false,
-      "timestamp": "2026-01-21T14:08:11.036Z"
-    }
-  ],
-  "407004771703193611": [
-    {
-      "id": "b37da1f4",
-      "description": "learn bot",
-      "completed": true,
-      "timestamp": "2026-02-05T17:14:32.720Z"
-    },
-    {
-      "id": "0e8858fa",
-      "description": "write some words",
-      "completed": false,
-      "timestamp": "2026-02-05T17:15:09.571Z"
-    },
-    {
-      "id": "3372522a",
-      "description": "socials post",
-      "completed": true,
-      "timestamp": "2026-02-05T18:33:40.304Z"
-    },
-    {
-      "id": "1c6d951c",
-      "description": "return books",
-      "completed": true,
-      "timestamp": "2026-02-05T18:41:32.226Z"
-    },
-    {
-      "id": "0ea5e79a",
-      "description": "socials post",
-      "completed": false,
-      "timestamp": "2026-02-06T15:21:27.306Z"
-    },
-    {
-      "id": "c424cba2",
-      "description": "shower",
-      "completed": false,
-      "timestamp": "2026-02-06T15:21:27.306Z"
-    },
-    {
-      "id": "1b2e0d63",
-      "description": "reluctantly get ready for socializing",
-      "completed": false,
-      "timestamp": "2026-02-06T15:21:27.307Z"
-    }
-  ],
-  "526465307775336469": [
-    {
-      "id": "82a85dca",
-      "description": "wall",
-      "completed": true,
-      "timestamp": "2026-02-05T17:38:33.446Z"
-    },
-    {
-      "id": "e05a703c",
-      "description": "mukherjee",
-      "completed": true,
-      "timestamp": "2026-02-05T17:38:33.447Z"
-    },
-    {
-      "id": "1fa7790a",
-      "description": "yeet the keyboard",
-      "completed": false,
-      "timestamp": "2026-02-05T18:55:53.152Z"
-    },
-    {
-      "id": "24ecedc6",
-      "description": "invoice zimmerman",
-      "completed": true,
-      "timestamp": "2026-02-05T23:49:08.504Z"
-    },
-    {
-      "id": "8f4ea66b",
-      "description": "email kelly update itin for zimmer man",
-      "completed": true,
-      "timestamp": "2026-02-05T23:49:37.068Z"
-    },
-    {
-      "id": "69207f53",
-      "description": "timesheet",
-      "completed": true,
-      "timestamp": "2026-02-06T23:32:57.921Z"
     }
   ]
 }

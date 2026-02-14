@@ -1,14 +1,13 @@
 {
-  "name": "the-task-boy",
-  "version": "1.1.1",
+  "name": "my-task-bot",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "JoeORJose",
-  "type": "module",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "discord.js": "^14.22.1",

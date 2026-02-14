@@ -1,25 +1,20 @@
-// utils/taskHandler.js
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
-import { v4 as uuidv4 } from 'uuid'; // For generating unique task IDs
+// index.js (or utils/taskHandler.js)
+const fs = require("fs").promises;
+const path = require("path");
+const { v4: uuidv4 } = require("uuid"); // For generating unique task IDs
 
-// Recreate __dirname for ES modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const tasksFilePath = path.resolve(__dirname, "./tasks.json");
+const tasksFilePath = path.resolve(__dirname, "tasks.json");
 
 // Function to read tasks from the JSON file
-const loadTasks = function () {
+async function loadTasks() {
     try {
-        const data = fs.readFileSync(tasksFilePath, 'utf8');
+        const data = await fs.readFile(tasksFilePath, "utf8");
         return JSON.parse(data);
     } catch (error) {
         if (error.code === "ENOENT") {
             // File not found, return empty object (first run)
             console.log("tasks.json not found, creating an empty one.");
-            fs.writeFileSync(tasksFilePath, JSON.stringify({}), "utf8");
+            await fs.writeFile(tasksFilePath, JSON.stringify({}), "utf8");
             return {};
         }
         console.error("Error loading tasks:", error);
@@ -27,12 +22,35 @@ const loadTasks = function () {
     }
 }
 
+// Function to get the user list from localStorage
+function getUserList() {
+    const userListString = localStorage.getItem("userList");
+    if (userListString) {
+        try {
+            return JSON.parse(userListString);
+        } catch (error) {
+            console.error("Error parsing userList from localStorage:", error);
+            return []; // Return empty array if parsing fails
+        }
+    }
+    return []; // Return empty array if no userList is found
+}
+
 // Function to write tasks to the JSON file
-function saveTasks(tasks) {
+async function saveTasks(tasks) {
     try {
-        fs.writeFileSync(tasksFilePath, JSON.stringify(tasks, null, 2), "utf8");
+        await fs.writeFile(tasksFilePath, JSON.stringify(tasks, null, 2), "utf8");
     } catch (error) {
         console.error("Error saving tasks:", error);
+    }
+}
+
+// Function to save the user list to localStorage
+function saveUserList(userList) {
+    try {
+        localStorage.setItem("userList", JSON.stringify(userList));
+    } catch (error) {
+        console.error("Error saving userList to localStorage:", error);
     }
 }
 
@@ -40,15 +58,14 @@ function saveTasks(tasks) {
 let userTasks = {};
 
 // Load tasks when the bot starts
-const initializeTasks = async () => {
+async function initializeTasks() {
     userTasks = await loadTasks();
     console.log("Tasks loaded successfully.");
 }
 
 // Export functions for use in your main bot file
-const tasks = {
+module.exports = {
     initializeTasks,
-    getUserData: (userId) => userTasks[userId],
     getUserTasks: (userId) => userTasks[userId] || [],
     addTask: async (userId, description) => {
         if (!userTasks[userId]) {
@@ -84,5 +101,3 @@ const tasks = {
         return incompleteTasks[index - 1] || null;
     },
 };
-
-export default tasks;
