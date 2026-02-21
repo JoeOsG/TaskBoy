@@ -1,16 +1,12 @@
-require('dotenv').config();
+import { readFileSync } from 'fs';
+import 'dotenv/config';
 
-const { Client, Events, GatewayIntentBits, EmbedBuilder } = require('discord.js');
+import { Client, Events, GatewayIntentBits, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, Colors } from 'discord.js';
 
-const {
-    initializeTasks,
-    addTask,
-    getUserTasks,
-    markTaskDone,
-    getTaskByIndex,
-} = require("./utils/taskHandler"); // Import our task functions
+import tasks from "./utils/taskHandler.js"; // Import our task functions
 
-const client = new Client({
+
+export const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
@@ -19,17 +15,21 @@ const client = new Client({
 });
 
 
+
 client.once("clientReady", async () => {
     console.log(`Ready! Logged in as ${client.user.tag}!`);
-    await initializeTasks(); // Load tasks when the bot starts
-    console.log("Task system initialized.");
+    await tasks.initializeTasks(); // Load tasks when the bot starts
 });
+
 
 client.login(process.env.DISCORD_TOKEN);
 
 
 client.on(Events.MessageCreate, async message => { // Added 'async' keyword here!
+    console.log('message')
     if (message.author.bot) return;
+
+    // if (!message.inGuild()) return;
 
     const prefix = '!';
 
@@ -39,39 +39,72 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
     const command = args.shift().toLowerCase();
 
     const userId = message.author.id; // Get the ID of the user who sent the command
+    const username = message.author.username;
 
     // --- Existing Commands ---
-    if (command === 'task1' && message.author.username === 'joeos') {
-        message.reply('Hi original slave!');
-    }
-    if (command === 'task1' && message.author.username === 'kawaiikitkat') {
-        message.reply('Hi kat!Hi kat!Hi kat!Hi kat!');
+    // --- !task Command (Multi-task support) ---
+    if (command === "task") {
+        const fullMessage = args.join(" ");
+        if (!fullMessage) {
+            return message.reply("Please provide one or more task descriptions, separated by `;` or `,`.");
+        }
+
+        // Split tasks by semicolon or comma, then trim whitespace and filter out empty strings
+        const descriptions = fullMessage
+            .split(/;|,/)
+            .map((desc) => desc.trim())
+            .filter((desc) => desc.length > 0);
+
+        if (descriptions.length === 0) {
+            return message.reply("No valid task descriptions found after splitting. Please try again.");
+        }
+
+        const addedTasks = [];
+        for (const description of descriptions) {
+            const newTask = await tasks.addTask(userId, description);
+            addedTasks.push(newTask);
+        }
+
+        const userData = tasks.getUserData(userId);
+        const embed = new EmbedBuilder()
+            .setColor(userData.userColor || Colors.Green)
+            .setTitle(`✅ ${addedTasks.length} Task(s) Added!`)
+            .setTimestamp()
+            .setFooter({
+                text: `Requested by ${message.author.tag}`,
+                iconURL: message.author.displayAvatarURL(),
+            });
+
+        let taskList = "";
+        addedTasks.forEach((task, index) => {
+            taskList += `**${index + 1}.** '${task.description}' (ID: \`${task.id}\`)\n`;
+        });
+        embed.setDescription(taskList); // Use description for the list of added tasks
+
+        return message.channel.send({ embeds: [embed] });
     }
 
-    if (command === 'ping1') {
+    if (command === 'ping') {
         message.reply('Slave me is, but still here!');
     }
 
-    if (command === 'hello1') {
+    if (command === 'hello') {
         message.channel.send(`Hello there, ${message.author.username}!`);
     }
 
-    if (command === 'echo1') {
+    if (command === 'echo') {
         if (!args.length) {
             return message.reply('You didn\'t provide anything to echo!');
         }
         message.channel.send(args.join(' '));
     }
     if (command === 'task1') {
-        // if (!args.length) {
-        //     return message.reply('You didn\'t provide anything to tasks!');
-        // }
         const description = args.join(" ");
         if (!description) {
             return message.reply("Please provide a description for your task!");
         }
 
-        const newTask = await addTask(userId, description);
+        const newTask = await tasks.addTask(userId, description);
         // Create an embed for task addition
         const embed = new EmbedBuilder()
             .setColor(0x00ff00) // Green color
@@ -88,8 +121,8 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
         return message.channel.send({ embeds: [embed] }); // Send the embed
     }
     // --- !check Command ---
-    if (command === "check1") {
-        const userAllTasks = getUserTasks(userId);
+    if (command === "check") {
+        const userAllTasks = tasks.getUserTasks(userId);
         const incompleteTasks = userAllTasks.filter((task) => !task.completed);
 
         const embed = new EmbedBuilder()
@@ -122,7 +155,7 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
     }
 
     // --- !done Command ---
-    if (command === "done1") {
+    if (command === "done") {
         const identifier = args[0]; // Can be task ID or list number
         if (!identifier) {
             return message.reply({
@@ -141,12 +174,12 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
         // Try to parse as a number (for list index)
         const taskNumber = parseInt(identifier);
         if (!isNaN(taskNumber)) {
-            taskToComplete = getTaskByIndex(userId, taskNumber);
+            taskToComplete = tasks.getTaskByIndex(userId, taskNumber);
         }
 
         // If not found by number, try to find by ID
         if (!taskToComplete) {
-            const userAllTasks = getUserTasks(userId);
+            const userAllTasks = tasks.getUserTasks(userId);
             taskToComplete = userAllTasks.find(
                 (t) => t.id === identifier && !t.completed
             );
@@ -164,7 +197,7 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
             });
         }
 
-        const completedTask = await markTaskDone(userId, taskToComplete.id);
+        const completedTask = await tasks.markTaskDone(userId, taskToComplete.id);
 
         if (completedTask) {
             // Create an embed for task completion
@@ -192,11 +225,6 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
             });
         }
 
-    }
-
-
-    if (command === 'cats1') {
-        message.reply('maureen and jasper are just as spoiled if not more, also hi Nico!');
     }
 
     // --- End Existing Commands ---
