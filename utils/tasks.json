@@ -51,19 +51,19 @@
     {
       "id": "68517292",
       "description": "AT-color, AT-data, AT-numeral, AT-logo,AT-piepag,AT-noserie,AT-cantidad,AT-encabezados",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-08T21:32:40.783Z"
     },
     {
       "id": "4b96b527",
       "description": "add multpile tasks in one line",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-08T21:33:23.337Z"
     },
     {
       "id": "655b66ae",
       "description": "1 2",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-08T21:33:58.988Z"
     },
     {
@@ -75,7 +75,7 @@
     {
       "id": "fe05839c",
       "description": "revisar como se muesta el logo",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-09T18:33:24.102Z"
     },
     {
@@ -87,13 +87,13 @@
     {
       "id": "c18aa874",
       "description": "setup github",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-10T14:57:18.607Z"
     },
     {
       "id": "723f74f8",
       "description": "setup alternative testing",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-10T14:57:25.187Z"
     },
     {
@@ -105,7 +105,7 @@
     {
       "id": "16fc4428",
       "description": "edit command oops",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-10T16:52:40.496Z"
     },
     {
@@ -135,85 +135,85 @@
     {
       "id": "a52a2fbf",
       "description": "testing",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-15T13:21:44.486Z"
     },
     {
       "id": "12bb7350",
       "description": "compare",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-15T13:21:44.488Z"
     },
     {
       "id": "8fe64a6b",
       "description": "testing",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-15T13:22:05.447Z"
     },
     {
       "id": "d576bfca",
       "description": "compare",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-15T13:22:05.449Z"
     },
     {
       "id": "1af3d967",
       "description": "testing",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-15T13:23:29.451Z"
     },
     {
       "id": "942dcacc",
       "description": "compare",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-15T13:23:29.453Z"
     },
     {
       "id": "d0a553f4",
       "description": "adjust",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-15T13:23:29.454Z"
     },
     {
       "id": "77b9235d",
       "description": "testing",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-15T13:24:30.230Z"
     },
     {
       "id": "48ea5012",
       "description": "compare",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-15T13:24:30.232Z"
     },
     {
       "id": "5d26e135",
       "description": "adjust",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-15T13:24:30.233Z"
     },
     {
       "id": "02c35bbc",
       "description": "testing",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-15T13:24:52.963Z"
     },
     {
       "id": "7a7d5692",
       "description": "compare",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-15T13:24:52.964Z"
     },
     {
       "id": "b0ad54ef",
       "description": "adjust",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-15T13:24:52.965Z"
     },
     {
       "id": "7f33038c",
       "description": "test",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-15T13:25:10.889Z"
     },
     {
@@ -231,7 +231,7 @@
     {
       "id": "86b0dc48",
       "description": "anotar",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-15T13:31:20.190Z"
     },
     {
@@ -249,7 +249,7 @@
     {
       "id": "f7f7adb1",
       "description": "apollo ready",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-01T20:49:24.417Z"
     },
     {
@@ -263,6 +263,108 @@
       "description": "adds double?",
       "completed": true,
       "timestamp": "2026-02-01T20:50:27.862Z"
+    },
+    {
+      "id": "466bd825",
+      "description": "thread followup",
+      "completed": true,
+      "timestamp": "2026-02-02T15:44:38.661Z"
+    },
+    {
+      "id": "f62d4309",
+      "description": "bank",
+      "completed": true,
+      "timestamp": "2026-02-04T01:53:28.594Z"
+    },
+    {
+      "id": "80263b04",
+      "description": "outside chores",
+      "completed": true,
+      "timestamp": "2026-02-06T14:44:53.963Z"
+    },
+    {
+      "id": "7fd4d8cc",
+      "description": "ride",
+      "completed": true,
+      "timestamp": "2026-02-06T14:44:53.963Z"
+    },
+    {
+      "id": "d7fc373c",
+      "description": "card",
+      "completed": true,
+      "timestamp": "2026-02-06T14:44:53.964Z"
+    },
+    {
+      "id": "04cca75b",
+      "description": "breakfast",
+      "completed": true,
+      "timestamp": "2026-02-06T14:44:53.965Z"
+    },
+    {
+      "id": "596e3158",
+      "description": "info payment",
+      "completed": true,
+      "timestamp": "2026-02-09T17:06:26.452Z"
+    },
+    {
+      "id": "82ec2e10",
+      "description": "vitamins",
+      "completed": true,
+      "timestamp": "2026-02-09T17:06:26.452Z"
+    },
+    {
+      "id": "fa92fe6c",
+      "description": "log",
+      "completed": true,
+      "timestamp": "2026-02-20T00:47:31.138Z"
+    },
+    {
+      "id": "a3d3feb8",
+      "description": "finish work",
+      "completed": true,
+      "timestamp": "2026-02-20T00:47:31.139Z"
+    },
+    {
+      "id": "547918a4",
+      "description": "revise changes",
+      "completed": false,
+      "timestamp": "2026-02-21T15:50:24.346Z"
+    },
+    {
+      "id": "0b3bcd79",
+      "description": "compare beta",
+      "completed": false,
+      "timestamp": "2026-02-21T15:50:24.347Z"
+    },
+    {
+      "id": "fe62528f",
+      "description": "change",
+      "completed": false,
+      "timestamp": "2026-02-21T20:17:03.938Z"
+    },
+    {
+      "id": "16363f1e",
+      "description": "check times",
+      "completed": false,
+      "timestamp": "2026-02-21T20:17:03.939Z"
+    },
+    {
+      "id": "8eb47a1c",
+      "description": "brush theeth",
+      "completed": false,
+      "timestamp": "2026-02-21T20:17:03.941Z"
+    },
+    {
+      "id": "7e01b6d0",
+      "description": "walk",
+      "completed": true,
+      "timestamp": "2026-02-21T20:17:03.943Z"
+    },
+    {
+      "id": "4853f031",
+      "description": "limit text on check",
+      "completed": false,
+      "timestamp": "2026-02-22T20:32:38.414Z"
     }
   ],
   "160815842613919744": [
@@ -305,7 +407,7 @@
     {
       "id": "0b77b509",
       "description": "START STREAM",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-10T16:53:48.027Z"
     },
     {
@@ -317,7 +419,7 @@
     {
       "id": "ea85849c",
       "description": "brushy teeth",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-10T16:54:01.435Z"
     },
     {
@@ -335,25 +437,25 @@
     {
       "id": "9f958e66",
       "description": "aaaaaa",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-01T20:53:13.686Z"
     },
     {
       "id": "c291c202",
       "description": "akskjh",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-01T20:53:17.272Z"
     },
     {
       "id": "b8614962",
       "description": "skjdhfkjhsf",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-01T20:53:21.944Z"
     },
     {
       "id": "98e3b7a6",
       "description": "finish questions",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-01T20:57:45.625Z"
     },
     {
@@ -361,6 +463,80 @@
       "description": "pee",
       "completed": false,
       "timestamp": "2026-02-01T20:57:45.625Z"
+    },
+    {
+      "id": "305eb15b",
+      "description": "aaaaaaa",
+      "completed": false,
+      "timestamp": "2026-02-06T12:10:01.854Z"
+    },
+    {
+      "id": "8550c6fe",
+      "description": "eat",
+      "completed": false,
+      "timestamp": "2026-02-19T15:43:11.025Z"
+    },
+    {
+      "id": "a7c633d4",
+      "description": "eat something",
+      "completed": false,
+      "timestamp": "2026-02-21T20:09:18.489Z"
+    }
+  ],
+  "1331748537062391872": [
+    {
+      "id": "add20ae6",
+      "description": "averiguar doc shit leo",
+      "completed": false,
+      "timestamp": "2026-02-11T00:57:44.984Z"
+    },
+    {
+      "id": "3405ec31",
+      "description": "stefan plan",
+      "completed": false,
+      "timestamp": "2026-02-20T01:34:23.402Z"
+    },
+    {
+      "id": "e1e857c8",
+      "description": "róża plan",
+      "completed": false,
+      "timestamp": "2026-02-20T01:34:23.403Z"
+    },
+    {
+      "id": "c68299b7",
+      "description": "stefan napisać pr dom ze stycznia",
+      "completed": false,
+      "timestamp": "2026-02-20T01:34:23.404Z"
+    },
+    {
+      "id": "0e946c8d",
+      "description": "estar juego wycinanka",
+      "completed": false,
+      "timestamp": "2026-02-20T01:34:23.405Z"
+    },
+    {
+      "id": "fdecc2f6",
+      "description": "wygląd ejercicios michał (profes and character too)",
+      "completed": false,
+      "timestamp": "2026-02-20T01:34:23.405Z"
+    },
+    {
+      "id": "6460630f",
+      "description": "twins oceny",
+      "completed": false,
+      "timestamp": "2026-02-20T01:34:23.407Z"
+    },
+    {
+      "id": "d7b4af93",
+      "description": "update gelz oceny w docu",
+      "completed": true,
+      "timestamp": "2026-02-20T01:34:23.408Z"
+    },
+    {
+      "id": "8471d92f",
+      "description": "julka plan",
+      "completed": true,
+      "timestamp": "2026-02-20T01:34:23.408Z"
     }
   ]
 }

@@ -4,7 +4,6 @@ import 'dotenv/config';
 import { Client, Events, GatewayIntentBits, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, Colors } from 'discord.js';
 
 import tasks from "./utils/taskHandler.js"; // Import our task functions
-//import threads from "./utils/welcomeThread.js";
 
 export const client = new Client({
     intents: [
@@ -15,7 +14,6 @@ export const client = new Client({
 });
 
 const CONFIG = JSON.parse(readFileSync('./utils/channels.json', 'utf-8'));
-// const ALLOWED_TEXT_CHANNELS = new Set(CONFIG.allowedChannels.map(c => c.id));
 
 client.once("clientReady", async () => {
     console.log(`Ready! Logged in as ${client.user.tag}!`);
@@ -74,7 +72,6 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
     if (message.author.bot) return;
 
     if (!message.inGuild()) return;
-    // if (!ALLOWED_TEXT_CHANNELS.has(message.channel.id)) return;
 
     const prefix = '!';
 
@@ -129,13 +126,13 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
         return message.channel.send({ embeds: [embed] });
     }
 
-    if (command === 'task' && message.author.username === 'joeos') {
+    if (command === 'suggest' && message.author.username === 'joeos') {
         message.reply('Hi original slave!');
     }
-    if (command === 'task' && message.author.username === 'kawaiikitkat') {
+    if (command === 'suggest' && message.author.username === 'kawaiikitkat') {
         message.reply('Hi kat!   Hi kat!    Hi kat!          Hi kat!');
     }
-    if (command === 'task' && message.author.username === 'alciia53') {
+    if (command === 'suggest' && message.author.username === 'alciia53') {
         message.reply('Smart!');
     }
 
@@ -152,28 +149,6 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
             return message.reply('You didn\'t provide anything to echo!');
         }
         message.channel.send(args.join(' '));
-    }
-    if (command === 'task1') {
-        const description = args.join(" ");
-        if (!description) {
-            return message.reply("Please provide a description for your task!");
-        }
-
-        const newTask = await tasks.addTask(userId, description);
-        // Create an embed for task addition
-        const embed = new EmbedBuilder()
-            .setColor(0x00ff00) // Green color
-            .setTitle("✅ Task Added!")
-            .setDescription(`'**${newTask.description}**'`)
-            .addFields(
-                // { name: "ID", value: `\`${newTask.id}\``, inline: true },
-                { name: "ADDED", value: `\Success\``, inline: true },
-                { name: "Assigned To", value: `<@${userId}>`, inline: true }
-            )
-            .setTimestamp()
-            .setFooter({ text: `Requested by ${message.author.tag}` });
-
-        return message.channel.send({ embeds: [embed] }); // Send the embed
     }
     // --- !check Command ---
     if (command === "check") {
@@ -211,7 +186,7 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
 
     // --- !done Command ---
     if (command === "done") {
-        const identifier = args[0]; // Can be task ID or list number
+        const identifier = args.join(" "); // Can be task ID or list number
         if (!identifier) {
             return message.reply({
                 embeds: [
@@ -224,42 +199,47 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
             });
         }
 
-        let taskToComplete = null;
+        const allDones = identifier
+            .split(/;|,/)
+            .map((oneDone) => oneDone.trim())
+            .filter((oneDone) => oneDone.length > 0);
 
-        // Try to parse as a number (for list index)
-        const taskNumber = parseInt(identifier);
-        if (!isNaN(taskNumber)) {
-            taskToComplete = tasks.getTaskByIndex(userId, taskNumber);
+        const doneTasks = [];
+        const notFound = [];
+        for (const doneTask of allDones) {
+
+            let taskToComplete = null;
+
+            // Try to parse as a number (for list index)
+            const taskNumber = parseInt(identifier);
+            if (!isNaN(taskNumber)) {
+                taskToComplete = tasks.getTaskByIndex(userId, taskNumber);
+            }
+
+            // If not found by number, try to find by ID
+            if (!taskToComplete) {
+                const userAllTasks = tasks.getUserTasks(userId);
+                taskToComplete = userAllTasks.find(
+                    (t) => t.id === identifier && !t.completed
+                );
+            }
+
+            if (!taskToComplete) {
+                notFound.push(doneTask);
+            }
+
+            if (taskToComplete) {
+                const completedTask = await tasks.markTaskDone(userId, taskToComplete.id);
+                doneTasks.push(completedTask);
+            }
         }
 
-        // If not found by number, try to find by ID
-        if (!taskToComplete) {
-            const userAllTasks = tasks.getUserTasks(userId);
-            taskToComplete = userAllTasks.find(
-                (t) => t.id === identifier && !t.completed
-            );
-        }
-
-        if (!taskToComplete) {
-            return message.reply({
-                embeds: [
-                    new EmbedBuilder()
-                        .setColor(0xff0000) // Red color for error
-                        .setDescription(
-                            `❌ Could not find an outstanding task with ID/number \`${identifier}\`.`
-                        ),
-                ],
-            });
-        }
-
-        const completedTask = await tasks.markTaskDone(userId, taskToComplete.id);
-
-        if (completedTask) {
+        if (doneTasks.length) {
             // Create an embed for task completion
             const embed = new EmbedBuilder()
                 .setColor(0x00ff00) // Green color
                 .setTitle("✅ Task Completed!")
-                .setDescription(`'**${completedTask.description}**'`)
+                .setDescription(`'**${doneTasks.length}**'`)
                 .addFields(
                     // { name: "ID", value: `\`${completedTask.id}\``, inline: true },
                     { name: "DONE", value: `\YES\``, inline: true },
