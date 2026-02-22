@@ -1,6 +1,6 @@
 {
   "name": "my-task-bot",
-  "version": "1.2.1",
+  "version": "1.9.2",
   "description": "",
   "main": "index.js",
   "scripts": {
