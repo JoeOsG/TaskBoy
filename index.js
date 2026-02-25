@@ -61,7 +61,7 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
 
     // --- Existing Commands ---
     // --- !task Command (Multi-task support) ---
-    if (command === "task") {
+    if (command === "tasks") {
         const fullMessage = args.join(" ");
         if (!fullMessage) {
             return message.reply("Please provide one or more task descriptions, separated by `;` or `,`.");
@@ -102,15 +102,15 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
         return message.channel.send({ embeds: [embed] });
     }
 
-    if (command === 'ping') {
+    if (command === 'pings') {
         message.reply('Slave me is, but still here!');
     }
 
-    if (command === 'hello') {
+    if (command === 'hellos') {
         message.channel.send(`Hello there, ${message.author.username}!`);
     }
 
-    if (command === 'echo') {
+    if (command === 'echos') {
         if (!args.length) {
             return message.reply('You didn\'t provide anything to echo!');
         }
@@ -118,7 +118,7 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
     }
 
     // --- !check Command ---
-    if (command === "check") {
+    if (command === "checks") {
         const userAllTasks = tasks.getUserTasks(userId);
         const incompleteTasks = userAllTasks.filter((task) => !task.completed);
 
@@ -139,20 +139,25 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
 
         if (incompleteTasks.length > 0) {
             // Add tasks as fields or description text
-            // For more than 25 tasks, you'd need pagination or multiple embeds.
-            // For now, let's list them in the description if not too many  // (ID: \`${task.id                     }\`)\n`;
             let taskList = "";
+            let countTasks = 0;
             incompleteTasks.forEach((task, index) => {
+                if (countTasks === 25) {
+                    embed.addFields({ name: `Tasks (${countTasks})`, value: taskList || "None", inline: false });
+                    taskList = "";
+                    countTasks = 0;
+                }
                 taskList += `**${index + 1}.** [ ] ${task.description}\n`;
+                countTasks++;
             });
-            embed.addFields({ name: "Tasks", value: taskList || "None", inline: false });
+            embed.addFields({ name: `Tasks (${countTasks})`, value: taskList || "None", inline: false });
         }
 
         return message.channel.send({ embeds: [embed] });
     }
 
     // --- !done Command ---
-    if (command === "done") {
+    if (command === "dones") {
         const identifier = args.join(" "); // Can be task ID or list number
         if (!identifier) {
             return message.reply({
