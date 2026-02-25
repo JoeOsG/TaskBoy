@@ -1,5 +1,5 @@
 {
-  "414220328819097601": [
+  "414220328819097600": [
     {
       "id": "a68b8ea8",
       "description": "first task",
@@ -309,8 +309,14 @@
     {
       "id": "9ae6d416",
       "description": "fix bot when many tasks",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-23T15:43:30.469Z"
+    },
+    {
+      "id": "b9b4faa6",
+      "description": "when u mark as done more than one but not in order it doesnt work",
+      "completed": false,
+      "timestamp": "2026-02-24T13:32:23.420Z"
     }
   ],
   "160815842613919744": [
@@ -471,6 +477,12 @@
       "description": "fnrp ejercicio",
       "completed": true,
       "timestamp": "2026-01-21T14:08:11.036Z"
+    },
+    {
+      "id": "3ddf75b2",
+      "description": "one",
+      "completed": false,
+      "timestamp": "2026-02-24T21:28:05.527Z"
     }
   ],
   "407004771703193611": [
@@ -542,7 +554,7 @@
     },
     {
       "id": "a51efe13",
-      "description": "pull canada off shipping option 😭",
+      "description": "pull canada off shipping option �",
       "completed": false,
       "timestamp": "2026-02-19T21:35:47.161Z"
     },
@@ -565,7 +577,7 @@
       "timestamp": "2026-02-23T15:28:53.944Z"
     }
   ],
-  "414220328819097600": [
+  "526465307775336469": [
     {
       "id": "82a85dca",
       "description": "wall",
@@ -725,7 +737,7 @@
     {
       "id": "09356956",
       "description": "finals for Peyton",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-22T03:42:58.780Z"
     },
     {
@@ -781,7 +793,7 @@
     {
       "id": "2611ce38",
       "description": "Baldwin Biography",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-20T20:59:03.773Z"
     },
     {
@@ -811,13 +823,13 @@
     {
       "id": "b99d1918",
       "description": "Love's a Witch",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-20T20:59:03.773Z"
     },
     {
       "id": "0d23fc25",
       "description": "Murder Road",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-20T20:59:03.773Z"
     },
     {
@@ -1069,8 +1081,20 @@
     {
       "id": "392918c3",
       "description": "dream the bot works for me",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-22T14:56:00.063Z"
+    },
+    {
+      "id": "ff3a654b",
+      "description": "Project Hail Mary (A)",
+      "completed": false,
+      "timestamp": "2026-02-23T22:22:40.112Z"
+    },
+    {
+      "id": "7558cfac",
+      "description": "The Rebel and the Rose",
+      "completed": false,
+      "timestamp": "2026-02-24T15:55:10.544Z"
     }
   ]
 }
