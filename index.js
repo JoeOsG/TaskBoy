@@ -61,7 +61,7 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
 
     // --- Existing Commands ---
     // --- !task Command (Multi-task support) ---
-    if (command === "tasks") {
+    if (command === "task") {
         const fullMessage = args.join(" ");
         if (!fullMessage) {
             return message.reply("Please provide one or more task descriptions, separated by `;` or `,`.");
@@ -102,15 +102,15 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
         return message.channel.send({ embeds: [embed] });
     }
 
-    if (command === 'pings') {
+    if (command === 'ping') {
         message.reply('Slave me is, but still here!');
     }
 
-    if (command === 'hellos') {
+    if (command === 'hello') {
         message.channel.send(`Hello there, ${message.author.username}!`);
     }
 
-    if (command === 'echos') {
+    if (command === 'echo') {
         if (!args.length) {
             return message.reply('You didn\'t provide anything to echo!');
         }
@@ -118,7 +118,7 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
     }
 
     // --- !check Command ---
-    if (command === "checks") {
+    if (command === "check") {
         const userAllTasks = tasks.getUserTasks(userId);
         const incompleteTasks = userAllTasks.filter((task) => !task.completed);
 
@@ -150,14 +150,14 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
                 taskList += `**${index + 1}.** [ ] ${task.description}\n`;
                 countTasks++;
             });
-            embed.addFields({ name: `Tasks (${countTasks})`, value: taskList || "None", inline: false });
+            embed.addFields({ name: "Tasks", value: taskList || "None", inline: false });
         }
 
         return message.channel.send({ embeds: [embed] });
     }
 
     // --- !done Command ---
-    if (command === "dones") {
+    if (command === "done") {
         const identifier = args.join(" "); // Can be task ID or list number
         if (!identifier) {
             return message.reply({
