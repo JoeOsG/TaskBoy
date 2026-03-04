@@ -1,6 +1,6 @@
 {
-  "name": "my-task-bot",
-  "version": "1.9.3",
+  "name": "boy-task-bot",
+  "version": "1.9.4",
   "description": "",
   "main": "index.js",
   "scripts": {

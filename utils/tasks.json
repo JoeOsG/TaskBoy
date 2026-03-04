@@ -317,6 +317,30 @@
       "description": "when u mark as done more than one but not in order it doesnt work",
       "completed": false,
       "timestamp": "2026-02-24T13:32:23.420Z"
+    },
+    {
+      "id": "a3d7e923",
+      "description": "Report Carta Reglas",
+      "completed": false,
+      "timestamp": "2026-02-25T21:25:02.495Z"
+    },
+    {
+      "id": "640d844f",
+      "description": "compilar",
+      "completed": false,
+      "timestamp": "2026-02-27T16:54:22.906Z"
+    },
+    {
+      "id": "9e734af1",
+      "description": "atento a la compilada",
+      "completed": false,
+      "timestamp": "2026-02-27T16:54:45.018Z"
+    },
+    {
+      "id": "86978d59",
+      "description": "rose really needs the delete command",
+      "completed": false,
+      "timestamp": "2026-03-03T17:16:47.724Z"
     }
   ],
   "160815842613919744": [
@@ -549,7 +573,7 @@
     {
       "id": "15d66062",
       "description": "update outline",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-19T15:53:18.913Z"
     },
     {
@@ -573,8 +597,26 @@
     {
       "id": "1f01c4ae",
       "description": "march theme poll",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-23T15:28:53.944Z"
+    },
+    {
+      "id": "e1a2e099",
+      "description": "hair",
+      "completed": false,
+      "timestamp": "2026-03-02T17:45:07.353Z"
+    },
+    {
+      "id": "e84a7ea6",
+      "description": "makeup",
+      "completed": false,
+      "timestamp": "2026-03-02T17:45:30.578Z"
+    },
+    {
+      "id": "91942519",
+      "description": "work on draft 2 revisions",
+      "completed": false,
+      "timestamp": "2026-03-02T17:45:30.579Z"
     }
   ],
   "526465307775336469": [
@@ -743,7 +785,7 @@
     {
       "id": "3360fb7c",
       "description": "finals for Ponrartana",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-22T03:42:58.781Z"
     },
     {
@@ -775,6 +817,12 @@
       "description": "Bachledger",
       "completed": false,
       "timestamp": "2026-02-22T03:42:58.782Z"
+    },
+    {
+      "id": "6ddfa4fa",
+      "description": "wrap up Peyton D-It",
+      "completed": true,
+      "timestamp": "2026-02-25T00:21:20.782Z"
     }
   ],
   "388937547268620289": [
@@ -799,7 +847,7 @@
     {
       "id": "b32f61f0",
       "description": "Original Sins",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-20T20:59:03.773Z"
     },
     {
@@ -841,7 +889,7 @@
     {
       "id": "7f380860",
       "description": "Biased",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-20T20:59:03.774Z"
     },
     {
@@ -907,7 +955,7 @@
     {
       "id": "5a62825e",
       "description": "The Eos Rising (H)",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-20T20:59:03.776Z"
     },
     {
@@ -1021,19 +1069,19 @@
     {
       "id": "dfbe694d",
       "description": "Smoke Show (KU)",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-20T20:59:03.779Z"
     },
     {
       "id": "9068ca96",
       "description": "Married to the Devil (KU)",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-20T20:59:03.779Z"
     },
     {
       "id": "a42dc630",
       "description": "What Lies Between Us (KU)",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-20T20:59:03.779Z"
     },
     {
@@ -1075,7 +1123,7 @@
     {
       "id": "0f961ecc",
       "description": "The Sea in You (GN)",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-20T21:03:25.053Z"
     },
     {
@@ -1095,6 +1143,78 @@
       "description": "The Rebel and the Rose",
       "completed": false,
       "timestamp": "2026-02-24T15:55:10.544Z"
+    },
+    {
+      "id": "f1e7af05",
+      "description": "Night",
+      "completed": false,
+      "timestamp": "2026-02-25T17:11:49.201Z"
+    },
+    {
+      "id": "3ab2f61d",
+      "description": "Like in Love With You",
+      "completed": false,
+      "timestamp": "2026-02-25T21:23:13.552Z"
+    },
+    {
+      "id": "4779fc4f",
+      "description": "Black in Blues (H)",
+      "completed": false,
+      "timestamp": "2026-02-27T20:31:44.485Z"
+    },
+    {
+      "id": "fc90b4dc",
+      "description": "Dark Restraint (H)",
+      "completed": false,
+      "timestamp": "2026-02-27T20:31:44.486Z"
+    },
+    {
+      "id": "75d32ebc",
+      "description": "Winter Hours (H)",
+      "completed": false,
+      "timestamp": "2026-02-27T20:31:44.486Z"
+    },
+    {
+      "id": "3a269e4e",
+      "description": "The Feeling of Falling in Love (H)",
+      "completed": false,
+      "timestamp": "2026-02-27T20:31:44.486Z"
+    },
+    {
+      "id": "d0a7834c",
+      "description": "Absolution",
+      "completed": false,
+      "timestamp": "2026-02-27T20:31:44.489Z"
+    },
+    {
+      "id": "cb80e73f",
+      "description": "Màgòdiz (H)",
+      "completed": false,
+      "timestamp": "2026-03-03T13:53:13.004Z"
+    },
+    {
+      "id": "93a26fa6",
+      "description": "The Hobbit",
+      "completed": false,
+      "timestamp": "2026-03-03T13:53:13.006Z"
+    },
+    {
+      "id": "81eae0d3",
+      "description": "Slewfoot",
+      "completed": false,
+      "timestamp": "2026-03-03T13:53:13.007Z"
+    },
+    {
+      "id": "63bcb314",
+      "description": "Gemina",
+      "completed": false,
+      "timestamp": "2026-03-04T13:00:06.529Z"
+    },
+    {
+      "id": "422fb7fe",
+      "description": "Giovanni's Room (P)",
+      "completed": false,
+      "timestamp": "2026-03-04T14:57:45.863Z"
     }
   ]
 }
