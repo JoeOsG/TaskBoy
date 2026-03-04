@@ -363,8 +363,26 @@
     {
       "id": "4853f031",
       "description": "limit text on check",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-22T20:32:38.414Z"
+    },
+    {
+      "id": "5b4eeb94",
+      "description": "backups",
+      "completed": false,
+      "timestamp": "2026-02-24T13:35:19.133Z"
+    },
+    {
+      "id": "da33762b",
+      "description": "errors",
+      "completed": false,
+      "timestamp": "2026-02-24T13:35:19.133Z"
+    },
+    {
+      "id": "7412b0d8",
+      "description": "review",
+      "completed": false,
+      "timestamp": "2026-02-24T13:35:19.134Z"
     }
   ],
   "160815842613919744": [
@@ -487,31 +505,31 @@
     {
       "id": "add20ae6",
       "description": "averiguar doc shit leo",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-11T00:57:44.984Z"
     },
     {
       "id": "3405ec31",
       "description": "stefan plan",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-20T01:34:23.402Z"
     },
     {
       "id": "e1e857c8",
       "description": "róża plan",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-20T01:34:23.403Z"
     },
     {
       "id": "c68299b7",
       "description": "stefan napisać pr dom ze stycznia",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-20T01:34:23.404Z"
     },
     {
       "id": "0e946c8d",
       "description": "estar juego wycinanka",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-02-20T01:34:23.405Z"
     },
     {
@@ -537,6 +555,66 @@
       "description": "julka plan",
       "completed": true,
       "timestamp": "2026-02-20T01:34:23.408Z"
+    },
+    {
+      "id": "5a74625c",
+      "description": "stefan plan",
+      "completed": false,
+      "timestamp": "2026-02-24T07:26:44.114Z"
+    },
+    {
+      "id": "cc5e6791",
+      "description": "róża plan",
+      "completed": false,
+      "timestamp": "2026-02-24T07:26:44.114Z"
+    },
+    {
+      "id": "865d0eba",
+      "description": "test chicos 26.02",
+      "completed": false,
+      "timestamp": "2026-02-25T01:55:04.292Z"
+    },
+    {
+      "id": "6d317a9e",
+      "description": "update whiteboard",
+      "completed": false,
+      "timestamp": "2026-02-25T01:55:04.293Z"
+    },
+    {
+      "id": "7af81f17",
+      "description": "julka plan",
+      "completed": false,
+      "timestamp": "2026-02-25T01:55:04.295Z"
+    },
+    {
+      "id": "762616f2",
+      "description": "test azza",
+      "completed": false,
+      "timestamp": "2026-02-25T01:55:04.295Z"
+    },
+    {
+      "id": "ae08478e",
+      "description": "plan test michał",
+      "completed": false,
+      "timestamp": "2026-02-25T01:55:04.297Z"
+    },
+    {
+      "id": "6556e7ac",
+      "description": "plan test leo",
+      "completed": false,
+      "timestamp": "2026-02-25T01:55:04.297Z"
+    },
+    {
+      "id": "42769fe2",
+      "description": "plan test 7kl",
+      "completed": false,
+      "timestamp": "2026-02-25T01:55:04.297Z"
+    },
+    {
+      "id": "c8361143",
+      "description": "check test leo",
+      "completed": false,
+      "timestamp": "2026-02-25T01:55:04.298Z"
     }
   ]
 }
