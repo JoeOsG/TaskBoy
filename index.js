@@ -1,68 +1,41 @@
-// utils/taskHandler.js
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
-import { v4 as uuidv4 } from 'uuid'; // For generating unique task IDs
+import { Client, Events, GatewayIntentBits, EmbedBuilder, Colors } from 'discord.js';
+import dotenv from 'dotenv';
+import tasks from './utils/taskHandler.js';
 
-// Recreate __dirname for ES modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+dotenv.config();
 
-const tasksFilePath = path.resolve(__dirname, "./tasks.json");
+const client = new Client({
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
+    ],
+});
 
-// Function to read tasks from the JSON file
-const loadTasks = function () {
-    try {
-        const data = fs.readFileSync(tasksFilePath, 'utf8');
-        return JSON.parse(data);
-    } catch (error) {
-        if (error.code === "ENOENT") {
-            // File not found, return empty object (first run)
-            console.log("tasks.json not found, creating an empty one.");
-            fs.writeFileSync(tasksFilePath, JSON.stringify({}), "utf8");
-            return {};
-        }
-        console.error("Error loading tasks:", error);
-        return {}; // Return empty object on other errors to prevent bot crash
-    }
-}
+client.once(Events.ClientReady, (c) => {
+    console.log(`Ready! Logged in as ${c.user.tag}`);
+    tasks.initializeTasks();
+});
 
-<<<<<<< HEAD
-// Function to write tasks to the JSON file
-function saveTasks(tasks) {
-    try {
-        fs.writeFileSync(tasksFilePath, JSON.stringify(tasks, null, 2), "utf8");
-    } catch (error) {
-        console.error("Error saving tasks:", error);
-=======
-client.login(process.env.DISCORD_TOKEN);
-
-
-client.on(Events.MessageCreate, async message => { // Added 'async' keyword here!
+client.on(Events.MessageCreate, async (message) => {
     if (message.author.bot) return;
-
     if (!message.inGuild()) return;
-    // if (!ALLOWED_TEXT_CHANNELS.has(message.channel.id)) return;
 
     const prefix = '!';
-
     if (!message.content.startsWith(prefix)) return;
 
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const command = args.shift().toLowerCase();
 
-    const userId = message.author.id; // Get the ID of the user who sent the command
-    const username = message.author.username;
+    const userId = message.author.id;
 
-    // --- Existing Commands ---
-    // --- !task Command (Multi-task support) ---
+    // --- !tasks Command (Multi-task support) ---
     if (command === "tasks") {
         const fullMessage = args.join(" ");
         if (!fullMessage) {
             return message.reply("Please provide one or more task descriptions, separated by `;` or `,`.");
         }
 
-        // Split tasks by semicolon or comma, then trim whitespace and filter out empty strings
         const descriptions = fullMessage
             .split(/;|,/)
             .map((desc) => desc.trim())
@@ -78,7 +51,7 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
             addedTasks.push(newTask);
         }
 
-        const userData = tasks.getUserData(userId);
+        const userData = tasks.getUserData(userId) || {};
         const embed = new EmbedBuilder()
             .setColor(userData.userColor || Colors.Green)
             .setTitle(`✅ ${addedTasks.length} Task(s) Added!`)
@@ -89,35 +62,14 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
             });
 
         let taskList = "";
-        addedTasks.forEach((task, index) => {
-            taskList += `**${index + 1}.** '${task.description}' (ID: \`${task.id}\`)\n`;
+        addedTasks.forEach((task) => {
+            taskList += `**${task.number}.** '${task.description}' (ID: \`${task.id}\`)\n`;
         });
-        embed.setDescription(taskList); // Use description for the list of added tasks
+        embed.setDescription(taskList);
 
         return message.channel.send({ embeds: [embed] });
->>>>>>> 3aee4d1 (For testing and fix total tasks when a lot)
     }
-}
 
-<<<<<<< HEAD
-// Initialize tasks in memory
-let userTasks = {};
-
-// Load tasks when the bot starts
-const initializeTasks = async () => {
-    userTasks = await loadTasks();
-    console.log("Tasks loaded successfully.");
-}
-
-// Export functions for use in your main bot file
-const tasks = {
-    initializeTasks,
-    getUserData: (userId) => userTasks[userId],
-    getUserTasks: (userId) => userTasks[userId] || [],
-    addTask: async (userId, description) => {
-        if (!userTasks[userId]) {
-            userTasks[userId] = [];
-=======
     if (command === 'pings') {
         message.reply('Slave me is, but still here!');
     }
@@ -129,90 +81,52 @@ const tasks = {
     if (command === 'echos') {
         if (!args.length) {
             return message.reply('You didn\'t provide anything to echo!');
->>>>>>> 3aee4d1 (For testing and fix total tasks when a lot)
         }
-        const newTask = {
-            id: uuidv4().slice(0, 8), // Use a shorter UUID for easier input
-            description,
-            completed: false,
-            timestamp: new Date().toISOString(),
-        };
-        userTasks[userId].push(newTask);
-        await saveTasks(userTasks);
-        return newTask;
-    },
-    markTaskDone: async (userId, taskId) => {
-        if (!userTasks[userId]) return null;
+        message.channel.send(args.join(" "));
+    }
 
-<<<<<<< HEAD
-        const task = userTasks[userId].find(
-            (t) => t.id === taskId && !t.completed
-        );
-        if (task) {
-            task.completed = true;
-            await saveTasks(userTasks);
-            return task;
-=======
-    // --- !check Command ---
+    // --- !checks Command ---
     if (command === "checks") {
         const userAllTasks = tasks.getUserTasks(userId);
         const incompleteTasks = userAllTasks.filter((task) => !task.completed);
 
         const embed = new EmbedBuilder()
             .setColor(0x0099ff) // Blue color
-            .setTitle(`� Your Outstanding Tasks`)
+            .setTitle(`📔 Your Outstanding Tasks`)
             .setDescription(
                 incompleteTasks.length > 0
                     ? `Here are your ${incompleteTasks.length} pending tasks:`
-                    : "You currently have no outstanding tasks! �"
+                    : "You currently have no outstanding tasks! 🎉"
             )
             .setTimestamp()
             .setFooter({ text: `Requested by ${message.author.tag}` });
 
-        if (incompleteTasks.length === 0) {
-            return message.reply("You currently have no outstanding tasks! �");
->>>>>>> 3aee4d1 (For testing and fix total tasks when a lot)
-        }
-        return null; // Task not found or already completed
-    },
-    // We'll add a function to find tasks by index for !done 1 later
-    getTaskByIndex: (userId, index) => {
-        if (!userTasks[userId] || index < 1) return null;
-        const incompleteTasks = userTasks[userId].filter((t) => !t.completed);
-        return incompleteTasks[index - 1] || null;
-    },
-};
-
-<<<<<<< HEAD
-export default tasks;
-=======
         if (incompleteTasks.length > 0) {
-            // Add tasks as fields or description text
             let taskList = "";
-            let countTasks = 0;
-            incompleteTasks.forEach((task, index) => {
-                if (countTasks === 25) {
-                    embed.addFields({ name: `Tasks (${countTasks})`, value: taskList || "None", inline: false });
+            let chunkCount = 0;
+            incompleteTasks.forEach((task) => {
+                if (chunkCount === 25) {
+                    embed.addFields({ name: `Tasks`, value: taskList || "None", inline: false });
                     taskList = "";
-                    countTasks = 0;
+                    chunkCount = 0;
                 }
-                taskList += `**${index + 1}.** [ ] ${task.description}\n`;
-                countTasks++;
+                taskList += `**${task.number}.** [ ] ${task.description}\n`;
+                chunkCount++;
             });
-            embed.addFields({ name: `Tasks (${countTasks})`, value: taskList || "None", inline: false });
+            embed.addFields({ name: `Tasks`, value: taskList || "None", inline: false });
         }
 
         return message.channel.send({ embeds: [embed] });
     }
 
-    // --- !done Command ---
+    // --- !dones Command ---
     if (command === "dones") {
-        const identifier = args.join(" "); // Can be task ID or list number
+        const identifier = args.join(" ");
         if (!identifier) {
             return message.reply({
                 embeds: [
                     new EmbedBuilder()
-                        .setColor(0xffcc00) // Yellowish color for warning
+                        .setColor(0xffcc00)
                         .setDescription(
                             "Please provide the ID or the number of the task you want to mark as done."
                         ),
@@ -226,27 +140,21 @@ export default tasks;
             .filter((oneDone) => oneDone.length > 0);
 
         const doneTasks = [];
-        const notFound = [];
         for (const doneTask of allDones) {
-
             let taskToComplete = null;
 
-            // Try to parse as a number (for list index)
-            const taskNumber = parseInt(identifier);
+            // Try to parse as a number (for stored task number)
+            const taskNumber = parseInt(doneTask);
             if (!isNaN(taskNumber)) {
-                taskToComplete = tasks.getTaskByIndex(userId, taskNumber);
+                taskToComplete = tasks.getTaskByNumber(userId, taskNumber);
             }
 
             // If not found by number, try to find by ID
             if (!taskToComplete) {
                 const userAllTasks = tasks.getUserTasks(userId);
                 taskToComplete = userAllTasks.find(
-                    (t) => t.id === identifier && !t.completed
+                    (t) => t.id === doneTask && !t.completed
                 );
-            }
-
-            if (!taskToComplete) {
-                notFound.push(doneTask);
             }
 
             if (taskToComplete) {
@@ -256,14 +164,12 @@ export default tasks;
         }
 
         if (doneTasks.length) {
-            // Create an embed for task completion
             const embed = new EmbedBuilder()
-                .setColor(0x00ff00) // Green color
+                .setColor(0x00ff00)
                 .setTitle("✅ Task Completed!")
-                .setDescription(`'**${doneTasks.length}**'`)
+                .setDescription(`'**${doneTasks.length}**' tasks completed.`)
                 .addFields(
-                    // { name: "ID", value: `\`${completedTask.id}\``, inline: true },
-                    { name: "DONE", value: `\YES\``, inline: true },
+                    { name: "DONE", value: `YES`, inline: true },
                     { name: "Completed By", value: `<@${userId}>`, inline: true }
                 )
                 .setTimestamp()
@@ -271,16 +177,15 @@ export default tasks;
 
             return message.channel.send({ embeds: [embed] });
         } else {
-            // This case should ideally not be reached if taskToComplete was found
             return message.reply({
                 embeds: [
                     new EmbedBuilder()
-                        .setColor(0xff0000) // Red color for error
-                        .setDescription("❌ Failed to mark task as done. Please try again."),
+                        .setColor(0xff0000)
+                        .setDescription("❌ No pending tasks found matching those identifiers."),
                 ],
             });
         }
     }
-    // --- End Existing Commands ---
 });
->>>>>>> 3aee4d1 (For testing and fix total tasks when a lot)
+
+client.login(process.env.DISCORD_TOKEN);

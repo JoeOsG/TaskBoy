@@ -54,8 +54,13 @@ const tasks = {
         if (!userTasks[userId]) {
             userTasks[userId] = [];
         }
+        const nextNumber = userTasks[userId].length > 0
+            ? Math.max(...userTasks[userId].map(t => t.number || 0)) + 1
+            : 1;
+
         const newTask = {
             id: uuidv4().slice(0, 8), // Use a shorter UUID for easier input
+            number: nextNumber,
             description,
             completed: false,
             timestamp: new Date().toISOString(),
@@ -77,11 +82,9 @@ const tasks = {
         }
         return null; // Task not found or already completed
     },
-    // We'll add a function to find tasks by index for !done 1 later
-    getTaskByIndex: (userId, index) => {
-        if (!userTasks[userId] || index < 1) return null;
-        const incompleteTasks = userTasks[userId].filter((t) => !t.completed);
-        return incompleteTasks[index - 1] || null;
+    getTaskByNumber: (userId, number) => {
+        if (!userTasks[userId]) return null;
+        return userTasks[userId].find((t) => t.number === number && !t.completed) || null;
     },
 };
 
