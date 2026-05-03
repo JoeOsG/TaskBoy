@@ -1,11 +1,10 @@
 import { readFileSync } from 'fs';
-import 'dotenv/config';
 
-import { Client, Events, GatewayIntentBits, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, Colors } from 'discord.js';
+import { Client, Events, GatewayIntentBits, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, Colors, ChannelType } from 'discord.js';
 
 import tasks from "./utils/taskHandler.js"; // Import our task functions
 
-export const client = new Client({
+const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
@@ -15,11 +14,16 @@ export const client = new Client({
 
 const CONFIG = JSON.parse(readFileSync('./utils/channels.json', 'utf-8'));
 
-client.once("clientReady", async () => {
-    console.log(`Ready! Logged in as ${client.user.tag}!`);
+client.once(Events.ClientReady, async (c) => {
+    console.log(`Ready! Logged in as ${c.user.tag}`);
     await tasks.initializeTasks(); // Load tasks when the bot starts
 
     const forum = await client.channels.fetch(CONFIG.forumId);
+    if (!forum || forum.type !== ChannelType.GuildForum) {
+        console.error('❌  CONFIG.forumId is not a valid forum channel');
+        return;
+    }
+
     // look for existing welcome post by name
     let welcomePost = forum.threads.cache.find(t => t.name === CONFIG.welcomePostName);
     if (!welcomePost) {
@@ -107,7 +111,7 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
             addedTasks.push(newTask);
         }
 
-        const userData = tasks.getUserData(userId);
+        const userData = tasks.getUserData(userId) || {};
         const embed = new EmbedBuilder()
             .setColor(userData.userColor || Colors.Green)
             .setTitle(`✅ ${addedTasks.length} Task(s) Added!`)
@@ -118,8 +122,8 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
             });
 
         let taskList = "";
-        addedTasks.forEach((task, index) => {
-            taskList += `**${index + 1}.** '${task.description}' (ID: \`${task.id}\`)\n`;
+        addedTasks.forEach((task) => {
+            taskList += `**${task.number}.** '${task.description}' (ID: \`${task.id}\`)\n`;
         });
         embed.setDescription(taskList); // Use description for the list of added tasks
 
@@ -150,6 +154,7 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
         }
         message.channel.send(args.join(' '));
     }
+
     // --- !check Command ---
     if (command === "check") {
         const userAllTasks = tasks.getUserTasks(userId);
@@ -175,8 +180,15 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
             // For more than 25 tasks, you'd need pagination or multiple embeds.
             // For now, let's list them in the description if not too many  // (ID: \`${task.id                     }\`)\n`;
             let taskList = "";
-            incompleteTasks.forEach((task, index) => {
-                taskList += `**${index + 1}.** [ ] ${task.description}\n`;
+            let chunkCount = 0;
+            incompleteTasks.forEach((task) => {
+                if (chunkCount === 25) {
+                    embed.addFields({ name: `Tasks`, value: taskList || "None", inline: false });
+                    taskList = "";
+                    chunkCount = 0;
+                }
+                taskList += `**${task.number}.** [ ] ${task.description}\n`;
+                chunkCount++;
             });
             embed.addFields({ name: "Tasks", value: taskList || "None", inline: false });
         }
@@ -207,25 +219,20 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
         const doneTasks = [];
         const notFound = [];
         for (const doneTask of allDones) {
-
             let taskToComplete = null;
 
-            // Try to parse as a number (for list index)
-            const taskNumber = parseInt(identifier);
+            // Try to parse as a number (for stored task number)
+            const taskNumber = parseInt(doneTask);
             if (!isNaN(taskNumber)) {
-                taskToComplete = tasks.getTaskByIndex(userId, taskNumber);
+                taskToComplete = tasks.getTaskByNumber(userId, taskNumber);
             }
 
             // If not found by number, try to find by ID
             if (!taskToComplete) {
                 const userAllTasks = tasks.getUserTasks(userId);
                 taskToComplete = userAllTasks.find(
-                    (t) => t.id === identifier && !t.completed
+                    (t) => t.id === doneTask && !t.completed
                 );
-            }
-
-            if (!taskToComplete) {
-                notFound.push(doneTask);
             }
 
             if (taskToComplete) {
@@ -239,7 +246,7 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
             const embed = new EmbedBuilder()
                 .setColor(0x00ff00) // Green color
                 .setTitle("✅ Task Completed!")
-                .setDescription(`'**${doneTasks.length}**'`)
+                .setDescription(`'**${doneTasks.length}**' tasks completed.`)
                 .addFields(
                     // { name: "ID", value: `\`${completedTask.id}\``, inline: true },
                     { name: "DONE", value: `\YES\``, inline: true },
