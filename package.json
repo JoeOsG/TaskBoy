@@ -1,6 +1,6 @@
 {
   "name": "discord-slave",
-  "version": "1.9.3",
+  "version": "1.9.5",
   "description": "Bot for tasks in threads per user",
   "main": "index.js",
   "scripts": {
