@@ -94,8 +94,8 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
             });
 
         let taskList = "";
-        addedTasks.forEach((task, index) => {
-            taskList += `**${index + 1}.** '${task.description}' (ID: \`${task.id}\`)\n`;
+        addedTasks.forEach((task) => {
+            taskList += `**${task}.** '${task.description}' (ID: \`${task.id}\`)\n`;
         });
         embed.setDescription(taskList); // Use description for the list of added tasks
 
@@ -141,13 +141,13 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
             // Add tasks as fields or description text
             let taskList = "";
             let countTasks = 0;
-            incompleteTasks.forEach((task, index) => {
+            incompleteTasks.forEach((task) => {
                 if (countTasks === 25) {
                     embed.addFields({ name: `Tasks (${countTasks})`, value: taskList || "None", inline: false });
                     taskList = "";
                     countTasks = 0;
                 }
-                taskList += `**${index + 1}.** [ ] ${task.description}\n`;
+                taskList += `**${task.number}.** [ ] ${task.description}\n`;
                 countTasks++;
             });
             embed.addFields({ name: "Tasks", value: taskList || "None", inline: false });
@@ -183,16 +183,16 @@ client.on(Events.MessageCreate, async message => { // Added 'async' keyword here
             let taskToComplete = null;
 
             // Try to parse as a number (for list index)
-            const taskNumber = parseInt(identifier);
+            const taskNumber = parseInt(doneTask);
             if (!isNaN(taskNumber)) {
-                taskToComplete = tasks.getTaskByIndex(userId, taskNumber);
+                taskToComplete = tasks.getTaskByNumber(userId, taskNumber);
             }
 
             // If not found by number, try to find by ID
             if (!taskToComplete) {
                 const userAllTasks = tasks.getUserTasks(userId);
                 taskToComplete = userAllTasks.find(
-                    (t) => t.id === identifier && !t.completed
+                    (t) => t.id === doneTask && !t.completed
                 );
             }
 

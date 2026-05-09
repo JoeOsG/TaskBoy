@@ -87,7 +87,7 @@
     {
       "id": "fa1c8b15",
       "description": "log current meeting done",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-01-12T19:55:57.528Z",
       "number": 13
     },
@@ -409,14 +409,14 @@
     {
       "id": "e64a385a",
       "description": "stops",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-03-04T20:53:36.375Z",
       "number": 59
     },
     {
       "id": "4e84d00d",
       "description": "shower",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-03-14T20:54:00.222Z",
       "number": 60
     },
@@ -472,7 +472,7 @@
     {
       "id": "96ff55db",
       "description": "trash",
-      "completed": false,
+      "completed": true,
       "timestamp": "2026-04-19T15:53:00.638Z",
       "number": 68
     },
@@ -524,6 +524,12 @@
       "description": "keep dates in mind so it doesnt take by suprise.",
       "completed": false,
       "timestamp": "2026-05-06T22:23:19.378Z"
+    },
+    {
+      "id": "e8ed86bb",
+      "description": "reflect more",
+      "completed": false,
+      "timestamp": "2026-05-09T04:26:54.829Z"
     }
   ],
   "160815842613919744": [

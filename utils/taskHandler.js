@@ -77,11 +77,10 @@ const tasks = {
         }
         return null; // Task not found or already completed
     },
-    // We'll add a function to find tasks by index for !done 1 later
-    getTaskByIndex: (userId, index) => {
-        if (!userTasks[userId] || index < 1) return null;
-        const incompleteTasks = userTasks[userId].filter((t) => !t.completed);
-        return incompleteTasks[index - 1] || null;
+    // We'll add a function to find tasks by number for !done 1 later
+    getTaskByNumber: (userId, number) => {
+        if (!userTasks[userId]) return null;
+        return userTasks[userId].find((t) => t.number === number && !t.completed) || null;
     },
 };
 
